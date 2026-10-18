@@ -1,0 +1,106 @@
+const TECH_masspro = ['HTML5', 'SCSS', 'JavaScript', 'Responsive'];
+const TECH_landing = ['Component system', 'HTML5', 'CSS', 'JavaScript'];
+const TECH_corporate = ['Responsive', 'Technical SEO', 'HTML5', 'CSS'];
+const TECH_animation = ['CSS animation', 'JavaScript', 'Performance'];
+const TECH_qa = ['QA testing', 'Cross-browser', 'HTML5', 'CSS'];
+const SCR = (dir, key, vs) => vs.map(v => ({ v: v.toUpperCase(), shots: ['desktop', 'tablet', 'mobile'].map(d => ({ src: 'assets/' + dir + '/' + key + '-' + v + '-' + d + '.png', device: d })) }));
+const PROJECTS = [
+  { id: 'masspro', client: "Iwatani · Hydrogen fuel cell ship", url: 'https://www.iwatani.co.jp/jpn/hydrogenfuelcellship/', title: "Revamping Mass Pro Pages and Landing Pages", tag: 'UI/UX and web development', year: 'Redesign', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_masspro, line: "Redesigned and optimized multiple high-traffic pages to improve UI consistency, performance and user experience across devices.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Redesigned and optimized multiple high-traffic pages to improve UI consistency, performance and user experience across devices." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'landing', client: "SMBC · Amulet", url: 'https://www.smbc.co.jp/hojin/sonota/factoring/Amulet/', title: "Landing Page Systems", tag: 'Design system', year: 'Components', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_landing, line: "Built a scalable landing page system with reusable components for faster deployment, consistency and conversion-focused design.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Built a scalable landing page system with reusable components for faster deployment, consistency and conversion-focused design." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'corporate', client: "transcosmos · Digital Interactive", url: 'https://www.trans-cosmos.co.jp/di/project/', title: "Corporate Website", tag: 'Web development', year: 'SEO', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_corporate, line: "Developed a responsive, SEO-optimized corporate website aligned with brand identity and modern UX standards.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Developed a responsive, SEO-optimized corporate website aligned with brand identity and modern UX standards." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'animation', client: "Asahi Soft Drinks · Roblox experience", url: 'https://www.asahiinryo.co.jp/entertainment/metaverse_factory/', title: "Redesigning Pages with Animations", tag: 'UI and motion', year: 'Animation', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_animation, line: "Enhanced existing pages with smooth, performance-friendly animations and modern UI improvements to boost engagement.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Enhanced existing pages with smooth, performance-friendly animations and modern UI improvements to boost engagement." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'qa', client: "LION · CHARMY Magica", url: 'https://magica.lion.co.jp/', title: "Page Redevelopment and Quality Assurance", tag: 'Development and QA', year: 'Quality', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_qa, line: "Redeveloped existing pages and tested them across devices and browsers before release.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Redeveloped existing pages and tested them across devices and browsers before release." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'stepwright', own: true, client: "Own product · Stepwright", url: 'https://stepwright.onrender.com/', title: "Stepwright", tag: 'Prompt library', cats: ["dev","own"], role: 'Designer and developer', tech: ["AI prompts","Workflow","HTML5","JavaScript"], line: "Ready-to-paste Claude prompts, anti-slop rules and a workflow composer for UI design and frontend work.", img: 'assets/img_project_06.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'atlas', own: true, client: "Own product · Design Atlas", url: 'https://design-atlas.onrender.com/', title: "Design Atlas", tag: 'Resource hub', cats: ["dev","own"], role: 'Designer and developer', tech: ["Catalog","JSON","Search","JavaScript"], line: "A curated index of UI kits, design systems, icons, fonts and tools, each listed with its creator and licence.", img: 'assets/img_project_07.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'orvanta', own: true, client: "Own product · Orvanta", url: 'https://orvanta.onrender.com/', title: "Orvanta", tag: 'Order tracker', cats: ["dev","own"], role: 'Designer and developer', tech: ["Web app","Dark mode","JavaScript","Local storage"], line: "Track orders shipped from China to the Philippines: CNY and PHP prices, tracking numbers and status from warehouse to door.", img: 'assets/img_project_08.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'marklith', own: true, client: "Own product · marklith", url: 'https://marklith.onrender.com/', title: "marklith", tag: 'Image to Markdown', cats: ["dev","own"], role: 'Designer and developer', tech: ["OCR","Markdown","JavaScript","Privacy-first"], line: "Extract text from screenshots and photos in the browser, correct it, and copy it as Markdown, an outline or prompt-ready text.", img: 'assets/img_project_09.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'hybridcam', own: true, client: "Own product · hybrid.cam", url: 'https://hybrid-cam-v2.onrender.com/', title: "hybrid.cam", tag: 'Marketplace', cats: ["dev","own"], role: 'Designer and developer', tech: ["Marketplace", "Escrow", "MapLibre", "Admin console", "JavaScript"], line: "An escrowed camera marketplace for Metro Manila: rider inspection, live tracking and payment released only on approval.", img: 'assets/img_project_10.jpg', ratio: '925/539', badge: 'Product' },
+  { id: 'harborline', own: true, client: "Own product · Harborline", url: 'https://harborline-site.onrender.com/', title: "Harborline", tag: 'SaaS landing page', cats: ["dev","own"], role: 'Designer and developer', tech: ["SaaS", "Design system", "Responsive", "Tokens", "HTML5", "CSS"], line: "Marketing site and design system for freight operations software: load triage, carrier vetting and rate confirmations on one board.", img: 'assets/harborline/og-image.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'invoicify', client: "Invoicify · Website", url: 'assets/img_project_12.png', title: "Invoicify Website", tag: 'UI/UX design', cats: ["design"], role: 'UI/UX Designer', tech: ["Figma", "Design system", "Landing pages", "Tokens"], line: "Marketing site and design system for a BIR-accredited e-invoicing platform, with industry pages for e-commerce and exporters.", img: 'assets/img_project_12.png', ratio: '4/3', badge: 'Project',
+    screens: [{ group: 'Landing pages', sets: [{ v: '', shots: [{ src: 'assets/img_project_12.png', device: 'Home' }, { src: 'assets/invoicify/ecommerce.png', device: 'E-commerce' }, { src: 'assets/invoicify/exporters.png', device: 'Exporters' }] }] }, { group: 'Design system', sets: [{ v: '', shots: [{ src: 'assets/invoicify/design-system.png', device: 'Tokens & components' }] }] }] },
+  { id: 'invoicify-portal', client: "Invoicify · Web portal", url: 'assets/img_project_13.png', title: "Invoicify Web Portal", tag: 'UI/UX design', cats: ["design"], role: 'UI/UX Designer', tech: ["Figma", "Responsive", "Auth flows", "Design system"], line: "Login, company registration, forgot password and account verification screens for the Invoicify portal, designed for desktop, tablet and mobile.", img: 'assets/img_project_13.png', ratio: '16/9', badge: 'Project',
+    screens: [{ group: 'Login', sets: SCR('invoicify-portal', 'login', ['v1', 'v2']) }, { group: 'Registration', sets: SCR('invoicify-portal', 'register', ['v1', 'v2']) }, { group: 'Forgot password', sets: SCR('invoicify-portal', 'forgot', ['v1', 'v2']) }, { group: 'Account verification', sets: SCR('invoicify-portal', 'verify', ['v1', 'v2']) }] },
+  { id: 'todonify', client: "Todonify · Web application", url: 'assets/todonify/desktop-dashboard.png', title: "Todonify Web Application", tag: 'UI/UX design', cats: ["design"], role: 'UI/UX Designer', tech: ["Figma", "Design system", "Responsive", "Web app"], line: "Task manager web app with a sidebar dashboard, task detail and add-task modals, and a matching mobile layout built on its own design tokens.", img: 'assets/todonify/desktop-dashboard.png', ratio: '3/2', badge: 'Project',
+    screens: [{ group: 'Desktop', sets: [{ v: '', shots: [{ src: 'assets/todonify/desktop-dashboard.png', device: 'Dashboard' }, { src: 'assets/todonify/desktop-view.png', device: 'View task' }, { src: 'assets/todonify/desktop-add.png', device: 'Add task' }] }] }, { group: 'Mobile', sets: [{ v: '', shots: [{ src: 'assets/todonify/mobile-dashboard.png', device: 'Dashboard' }, { src: 'assets/todonify/mobile-view.png', device: 'View task' }, { src: 'assets/todonify/mobile-add.png', device: 'Add task' }] }] }, { group: 'Design system', sets: [{ v: '', shots: [{ src: 'assets/todonify/design-system.png', device: 'Tokens & components' }] }] }] },
+  { id: 'busybee', client: "BusyBee · Mobile application", url: 'assets/busybee/thumb.png', title: "BusyBee Mobile Application", tag: 'UI/UX design', cats: ["design"], role: 'UI/UX Designer', tech: ["Figma", "Design system", "Mobile", "Grayscale UI"], line: "Grayscale mobile app screens for login, user details and a paginated team members table, all driven by one color and type system.", img: 'assets/busybee/thumb.png', ratio: '16/10', badge: 'Project',
+    screens: [{ group: 'Screens', sets: [{ v: '', shots: [{ src: 'assets/busybee/login.png', device: 'Login form' }, { src: 'assets/busybee/user-details.png', device: 'User details list' }, { src: 'assets/busybee/team-members.png', device: 'Team members table' }] }] }, { group: 'Design system', sets: [{ v: '', shots: [{ src: 'assets/busybee/design-system.png', device: 'Color & typography' }] }] }] }
+];
+PROJECTS.forEach(p => { if (p.screens) p.cats = p.cats.filter(c => c !== 'dev'); });
+
+const THUMBS = new Set(['img_project_01.jpg','img_project_02.jpg','img_project_03.jpg','img_project_04.jpg','img_project_05.jpg','img_project_06.png','img_project_07.png','img_project_08.png','img_project_09.png','img_project_10.jpg','img_project_11.png','img_project_12.png','img_project_13.png','todonify/desktop-dashboard.png','busybee/thumb.png','harborline/og-image.png']);
+const TH = s => { const k = String(s || '').replace(/^\.?\/?assets\//, ''); return THUMBS.has(k) ? 'assets/thumbs/' + k.replace('/', '-').replace(/\.\w+$/, '.webp') : s; };
+class Component extends DCLogic {
+  galRef = React.createRef(); galBody = React.createRef();
+  closeGal = () => { this.setState({ gal: null }); document.body.style.overflow = ''; const f = this.lastFocus; f && f.focus && setTimeout(() => f.focus(), 0); };
+  state = { gal: null, gi: 0, q: '', cat: 'all', w: typeof window !== 'undefined' ? window.innerWidth : 1280, pill: false, pillInset: 24, menu: false, loading: true };
+  startLoad = (first) => { clearTimeout(this.lT); cancelAnimationFrame(this.lR); const id = (this.lId = (this.lId || 0) + 1), t0 = Date.now(), min = first ? 700 : 450;
+    if (!this.state.loading) this.setState({ loading: true });
+    const finish = () => { if (id !== this.lId) return; this.lT = setTimeout(() => id === this.lId && this.setState({ loading: false }), Math.max(0, min - (Date.now() - t0))); };
+    this.lR = requestAnimationFrame(() => { const root = this.gridRef.current; const imgs = root ? [...root.querySelectorAll('img')].filter(i => { const b = i.getBoundingClientRect(); return b.top < window.innerHeight && b.bottom > 0 && !i.complete; }) : [];
+      Promise.race([Promise.all(imgs.map(i => new Promise(res => { i.addEventListener('load', res, { once: true }); i.addEventListener('error', res, { once: true }); }))), new Promise(res => setTimeout(res, 2500))]).then(finish); }); };
+  gridRef = React.createRef(); sentinelRef = React.createRef(); hdrInner = React.createRef(); menuClose = React.createRef();
+  openMenu = () => { this.lastFocus = document.activeElement; this.setState({ menu: true }, () => setTimeout(() => this.menuClose.current && this.menuClose.current.focus(), 0)); };
+  closeAll = () => { if (!this.state.menu) return; this.setState({ menu: false }, () => this.lastFocus && this.lastFocus.focus && this.lastFocus.focus({ preventScroll: true })); };
+  componentDidMount() {
+    this.onGalKey = (e) => { if (e.key === 'Escape' && this.state.gal) this.closeGal(); }; window.addEventListener('keydown', this.onGalKey);
+    this.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    try { const d = JSON.parse(localStorage.getItem('jas-display') || '{}'); if (d.size && d.size !== 'm') document.documentElement.dataset.size = d.size; if (d.contrast === 'hc') document.documentElement.dataset.theme = 'hc'; } catch (e) {}
+    this.measurePill = () => { const el = this.hdrInner.current; if (!el) return; const r = el.getBoundingClientRect(); const pad = parseFloat(getComputedStyle(el).paddingLeft) || 16; this.setState({ pillInset: Math.max(6, Math.round(r.left + pad + 26 - 18)) }); };
+    this.onResize = () => { this.setState({ w: window.innerWidth }); this.measurePill(); };
+    window.addEventListener('resize', this.onResize); this.measurePill();
+    this.onKey = e => { if (e.key === 'Escape') this.closeAll(); }; window.addEventListener('keydown', this.onKey);
+    const sen = this.sentinelRef.current;
+    if (sen && 'IntersectionObserver' in window) { this.hio = new IntersectionObserver(([en]) => this.setState({ pill: !en.isIntersecting })); this.hio.observe(sen); }
+    const cat = new URLSearchParams(location.search).get('cat');
+    if (cat === 'dev' || cat === 'design' || cat === 'own') this.setState({ cat });
+    this.observe();
+    this.startLoad(true);
+  }
+  componentDidUpdate() { clearTimeout(this.oT); this.oT = setTimeout(() => this.observe(), 30); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('keydown', this.onKey); this.hio && this.hio.disconnect(); this.io && this.io.disconnect(); clearTimeout(this.oT); clearTimeout(this.lT); cancelAnimationFrame(this.lR); }
+  observe() {
+    const root = this.gridRef.current; if (!root) return;
+    const show = el => { el.style.opacity = '1'; el.style.transform = 'none'; el.dataset.seen = '1'; };
+    const tiles = [...root.querySelectorAll('[data-tile]')].filter(el => !el.dataset.seen && !el.dataset.watch);
+    if (this.reduce || !('IntersectionObserver' in window)) { tiles.forEach(el => { el.style.transition = 'none'; show(el); }); return; }
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { show(en.target); this.io.unobserve(en.target); } }), { threshold: 0.15 });
+    tiles.forEach(el => { el.dataset.watch = '1'; const r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) requestAnimationFrame(() => show(el)); else this.io.observe(el); });
+  }
+  renderVals() {
+    const s = this.state, q = s.q.trim().toLowerCase();
+    const match = p => !q || [p.title, p.client, p.tag, p.line, ...(p.tech || [])].join(' ').toLowerCase().includes(q);
+    const inCat = (p, c) => c === 'all' || p.cats.includes(c);
+    const list = PROJECTS.filter(p => match(p) && inCat(p, s.cat));
+    const nc = s.w < 640 ? 1 : s.w < 1000 ? 2 : 3;
+    const ratios = ['16/10', '2/1', '16/9', '3/2', '16/10'];
+    const build = arr => { const cols = Array.from({ length: nc }, () => []); arr.forEach((p, i) => { const pi = PROJECTS.indexOf(p);
+      const gal = !!p.screens; cols[i % nc].push({ target: gal ? undefined : '_blank', popup: gal ? 'dialog' : undefined, cta: gal ? 'View screens' : 'Live site', sr: gal ? '(opens a screen gallery)' : '(opens in a new tab)', open: gal ? (e) => { e.preventDefault(); this.lastFocus = e.currentTarget; this.setState({ gal: p.id, gi: 0 }, () => { document.body.style.overflow = 'hidden'; setTimeout(() => this.galRef.current && this.galRef.current.focus(), 0); }); } : undefined, title: p.title, client: p.client, line: p.line, url: p.url, img: TH(p.img || ('assets/img_project_0' + (pi + 1) + '.jpg')), alt: 'Screenshot of ' + p.title + ' for ' + p.client, ratio: p.ratio || ratios[pi % ratios.length], delay: (i * 100) + 'ms',
+        badges: [...(p.own ? [{ label: 'Own product', bg: '#E2F0E8', ink: '#1F6B45' }] : []), ...(p.cats.includes('dev') ? [{ label: 'Front-end', bg: '#FBE4E5', ink: '#9E1419' }] : []), ...(p.cats.includes('design') ? [{ label: 'Design', bg: '#E3E9FB', ink: '#1F3C9C' }] : [])] }); }); return cols.map((t, i) => ({ tiles: t, offset: nc > 1 && i === 1 ? '14px' : '0px' })); };
+    const clientList = list.filter(p => !p.own), ownList = list.filter(p => p.own);
+    const cnt = c => PROJECTS.filter(p => match(p) && inCat(p, c)).length;
+    return {
+      q: s.q, onQ: e => { this.setState({ q: e.target.value }); this.startLoad(); }, clear: () => this.setState({ q: '', cat: 'all' }),
+      cats: [['all', 'All'], ['dev', 'Front-end'], ['design', 'Design'], ['own', 'Own products']].map(([k, l]) => ({ label: l, count: cnt(k), on: s.cat === k, bg: s.cat === k ? 'var(--ink)' : 'transparent', ink: s.cat === k ? 'var(--on-ink)' : 'var(--ink)', pick: () => { if (s.cat !== k) { this.setState({ cat: k }); this.startLoad(); } } })),
+      cols: build([...clientList, ...ownList]), hasClient: list.length > 0,
+      wide: s.w >= 980, narrow: s.w < 980, menu: s.menu, openMenu: this.openMenu, closeAll: this.closeAll, menuClose: this.menuClose,
+      sentinelRef: this.sentinelRef, hdrInner: this.hdrInner,
+      navItems: [['work', 'Work'], ['expertise', 'Stack'], ['experience', 'Experience'], ['about', 'About'], ['resources', 'Resources']].map(([id, label]) => ({ href: 'index.html#' + id, label, on: id === 'work', off: id !== 'work' })),
+      hdrClip: s.pill ? 'inset(0 ' + s.pillInset + 'px 0 ' + s.pillInset + 'px round 999px)' : 'inset(0 0 0 0 round 0px)',
+      hdrTf: s.pill ? 'translateY(5px)' : 'translateY(0)', hdrShadow: s.pill ? 'drop-shadow(0 10px 24px rgba(20,36,58,0.16))' : 'drop-shadow(0 0 0 rgba(20,36,58,0))',
+      hdrLine: s.pill ? 'transparent' : 'var(--line)', logoTf: s.pill ? 'translateX(26px)' : 'translateX(0)', ctaTf: s.pill ? 'translateX(-26px)' : 'translateX(0)',
+      ...(() => { const gp = PROJECTS.find(x => x.id === s.gal); if (!gp) return { galOpen: false };
+        const g = gp.screens[s.gi] || gp.screens[0];
+        return { galOpen: true, galTitle: gp.title, galClient: gp.client, galLine: gp.line, galClose: this.closeGal, galStop: (e) => e.stopPropagation(), galRef: this.galRef,
+          galTabs: gp.screens.map((x, i) => ({ label: x.group, n: x.sets.reduce((a, st) => a + st.shots.length, 0), on: i === s.gi ? 'true' : 'false', bg: i === s.gi ? 'var(--ink)' : 'transparent', ink: i === s.gi ? 'var(--on-ink)' : 'var(--ink)', pick: () => { this.setState({ gi: i }); this.galBody.current && this.galBody.current.scrollTo({ top: 0 }); } })),
+          galSets: g.sets.map(st => ({ v: st.v, hasV: !!st.v, shots: st.shots.map(sh => ({ ...sh, alt: gp.title + ' · ' + g.group + (st.v ? ' ' + st.v : '') + ' · ' + sh.device, label: sh.device, flex: sh.device === 'tablet' ? '1.7 1 12rem' : sh.device === 'mobile' ? '0.9 1 8rem' : '3 1 20rem' })) })), galBody: this.galBody }; })(),
+      empty: !s.loading && list.length === 0, status: s.loading ? 'Loading projects…' : list.length === 1 ? '1 project' : list.length + ' projects',
+      busy: s.loading ? 'true' : 'false', skelOp: s.loading ? 1 : 0, skelVis: s.loading ? 'visible' : 'hidden', realOp: s.loading ? 0 : 1,
+      shimmer: this.reduce ? null : (this.shim || (this.shim = React.createElement('span', { 'aria-hidden': 'true', style: { position: 'absolute', top: 0, bottom: 0, left: 0, width: '55%', background: 'linear-gradient(100deg, transparent, rgba(255,255,255,.85), transparent)', transform: 'translateX(-120%)', animation: 'jas-shimmer 1.4s ease-in-out infinite', willChange: 'transform', pointerEvents: 'none' } }))), gridRef: this.gridRef
+    };
+  }
+}
