@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>All projects · James Albert Salva (JAS)</title>
+<meta name="description" content="Every project by James Albert Salva, searchable and filterable by front-end and design.">
+<meta name="theme-color" content="#14243A">
+<link rel="icon" type="image/webp" href="assets/img_hero_design_01.webp">
+<script>document.documentElement.lang='en'</script>
+<link rel="canonical" href="https://jas-portfolio.onrender.com/projects.html">
+<meta property="og:url" content="https://jas-portfolio.onrender.com/projects.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+p,dd,blockquote,figcaption,li:not(:has(div,a,button,h3,ul,ol)){max-inline-size:66ch}
+h1,h2,h3,h4{text-wrap:balance}p,li,dd,dt,figcaption,blockquote,label{text-wrap:pretty;hyphens:manual;overflow-wrap:break-word}
+:root{--bg:#F7F6F2;--surface:#FFFFFF;--ink:#14243A;--ink-2:#4A5568;--line:#DEDBD2;--line-strong:#7D8594;--accent:#4169E1;--accent-ink:#2F52C4;--on-ink:#F7F6F2;--on-ink-2:#C3CCDA;--accent-on-ink:#A9BCF7;--focus:#2F52C4;--danger:#A3261B;--ok:#1F6B45;--stripe:rgba(20,36,58,0.07);--overlay:rgba(20,36,58,0.55)}
+html[data-theme="hc"]{--bg:#FFFFFF;--surface:#FFFFFF;--ink:#000000;--ink-2:#1A1A1A;--line:#000000;--line-strong:#000000;--accent:#1A36A0;--accent-ink:#1A36A0;--on-ink:#FFFFFF;--on-ink-2:#FFFFFF;--accent-on-ink:#FFFFFF;--focus:#000000;--danger:#8A0000;--ok:#004D1A;--stripe:rgba(0,0,0,0.14);--overlay:rgba(0,0,0,0.75)}
+html[data-size="l"]{font-size:112.5%}
+html[data-size="xl"]{font-size:125%}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:1rem;line-height:1.618;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink);text-underline-offset:0.2em;text-decoration-thickness:1px}
+a:hover{color:var(--ink)}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+::selection{background:var(--ink);color:var(--on-ink)}
+@keyframes jas-blink{50%{opacity:0}}
+@keyframes jas-shimmer{from{transform:translateX(-120%)}to{transform:translateX(260%)}}
+@keyframes jas-skel-pulse{50%{opacity:.6}}
+@keyframes jas-wall{to{transform:translateY(calc(-50% - 6px))}}
+@keyframes jas-marquee{to{transform:translateX(-50%)}}
+@keyframes jas-marquee-r{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</helmet>
+
+<a href="#projects-main" style="position:fixed;left:1rem;top:-5rem;z-index:100;background:var(--ink);color:var(--on-ink);padding:0 1rem;font-weight:600;text-decoration:none;min-height:44px;display:flex;align-items:center" style-focus="top:1rem">Skip to content</a>
+<div ref="{{ sentinelRef }}" aria-hidden="true" style="position:absolute;top:16px;left:0;width:1px;height:1px;pointer-events:none"></div>
+<header style="position:fixed;top:0;left:0;right:0;z-index:30;transition:transform 600ms linear(0, 0.094 5.6%, 0.274 11.1%, 0.455 16.7%, 0.608 22.2%, 0.726 27.8%, 0.812 33.3%, 0.873 38.9%, 0.944 50%, 0.976 61.1%, 1 100%),filter 600ms ease;transform:{{ hdrTf }};filter:{{ hdrShadow }}">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:var(--bg);box-shadow:inset 0 -1px 0 {{ hdrLine }};transition:clip-path 600ms linear(0, 0.094 5.6%, 0.274 11.1%, 0.455 16.7%, 0.608 22.2%, 0.726 27.8%, 0.812 33.3%, 0.873 38.9%, 0.944 50%, 0.976 61.1%, 1 100%);clip-path:{{ hdrClip }}"></div>
+  <div ref="{{ hdrInner }}" style="position:relative;max-width:72rem;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem);min-height:4.25rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem">
+    <a href="/" aria-label="JAS, James Albert Salva, portfolio home" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--ink);min-height:44px;flex:none;transition:transform 600ms linear(0, 0.094 5.6%, 0.274 11.1%, 0.455 16.7%, 0.608 22.2%, 0.726 27.8%, 0.812 33.3%, 0.873 38.9%, 0.944 50%, 0.976 61.1%, 1 100%);transform:{{ logoTf }}">
+      <svg width="26" height="26" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 40H128V64H64V128H40Z" style="fill:var(--ink)"></path><path d="M216 216H128V192H192V128H216Z" style="fill:var(--ink)"></path><path d="M146 76H170L110 180H86Z" style="fill:var(--accent)"></path></svg>
+      <span style="font-weight:700;font-size:1.25rem;letter-spacing:0.04em">JAS</span>
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Sections" style="display:flex;align-items:center;gap:0.125rem;flex:none;transition:transform 600ms linear(0, 0.094 5.6%, 0.274 11.1%, 0.455 16.7%, 0.608 22.2%, 0.726 27.8%, 0.812 33.3%, 0.873 38.9%, 0.944 50%, 0.976 61.1%, 1 100%);transform:{{ ctaTf }}">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <sc-if value="{{ n.on }}"><a href="{{ n.href }}" aria-current="true" style="min-height:44px;padding:0 0.75rem;display:flex;align-items:center;color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:0.45em">{{ n.label }}</a></sc-if>
+          <sc-if value="{{ n.off }}"><a href="{{ n.href }}" style="min-height:44px;padding:0 0.75rem;display:flex;align-items:center;color:var(--ink-2);font-weight:500;text-decoration:none" style-hover="color:var(--ink)">{{ n.label }}</a></sc-if>
+        </sc-for>
+        
+        <a href="/#contact" style="transition:background 200ms;flex:none;margin-left:0.75rem;white-space:nowrap;min-height:44px;padding:0 1.125rem;display:flex;align-items:center;background:var(--ink);color:var(--on-ink);text-decoration:none;font-weight:600;border-radius:6px" style-hover="background:var(--accent-ink);color:#FFFFFF">Let's talk</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}">
+      <div style="display:flex;gap:0.5rem;transition:transform 600ms linear(0, 0.094 5.6%, 0.274 11.1%, 0.455 16.7%, 0.608 22.2%, 0.726 27.8%, 0.812 33.3%, 0.873 38.9%, 0.944 50%, 0.976 61.1%, 1 100%);transform:{{ ctaTf }}">
+        
+        <button type="button" onClick="{{ openMenu }}" aria-expanded="{{ menu }}" aria-controls="mobile-menu" style="white-space:nowrap;flex:none;min-height:44px;padding:0 1rem;background:var(--ink);color:var(--on-ink);border:0;border-radius:6px;cursor:pointer;font-weight:600">Menu</button>
+      </div>
+    </sc-if>
+  </div>
+</header>
+<div aria-hidden="true" style="height:4.25rem"></div>
+
+<sc-if value="{{ menu }}">
+  <div id="mobile-menu" style="position:fixed;inset:0;z-index:60;display:flex;justify-content:flex-end">
+    <div onClick="{{ closeAll }}" aria-hidden="true" style="position:absolute;inset:0;background:var(--overlay)"></div>
+    <div role="dialog" aria-modal="true" aria-label="Menu" style="position:relative;width:min(100%,22rem);height:100%;background:var(--bg);padding:1rem 1.5rem max(2rem,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:1.5rem;overflow-y:auto">
+      <div style="display:flex;justify-content:space-between;align-items:center;min-height:3.25rem">
+        <span style="font-weight:700;letter-spacing:0.04em">JAS</span>
+        <button type="button" onClick="{{ closeAll }}" ref="{{ menuClose }}" style="min-height:44px;padding:0 1rem;background:transparent;border:1px solid var(--line-strong);border-radius:6px;cursor:pointer;font-weight:600">Close</button>
+      </div>
+      <nav aria-label="Sections" style="display:flex;flex-direction:column">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" onClick="{{ closeAll }}" style="font-family:'Newsreader',Georgia,serif;font-size:2rem;line-height:1.25;padding:0.5rem 0;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)">{{ n.label }}</a>
+        </sc-for>
+        <a href="/#contact" onClick="{{ closeAll }}" style="font-family:'Newsreader',Georgia,serif;font-size:2rem;line-height:1.25;padding:0.5rem 0;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)">Contact</a>
+      </nav>
+    </div>
+  </div>
+</sc-if>
+
+
+<main id="projects-main" tabindex="-1" style="outline:none;display:block">
+  <div style="max-width:72rem;margin:0 auto;padding:clamp(2.5rem,6vw,4.5rem) clamp(1rem,4vw,2.5rem) clamp(3rem,7vw,5.5rem);display:flex;flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:0.5rem">
+      <span style="font-weight:600;color:var(--ink-2)">Work <span aria-hidden="true" style="color:var(--accent)">/</span> Archive</span>
+      <h1 style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(2.25rem,5vw,3.5rem);line-height:1.05;letter-spacing:-0.01em">All <span style="color:var(--accent-ink)">projects.</span></h1>
+      <p style="margin:0;color:var(--ink-2);font-size:1.0625rem;max-width:34rem">Client builds, design work and my own products, from 2017 to now. Search or filter, then open a project's live site.</p>
+    </div>
+    <div style="position:sticky;top:4.25rem;z-index:10;background:var(--bg);padding:1rem 0 0.875rem;margin:-1rem 0 -0.875rem;box-shadow:0 0 0 100vmax var(--bg),0 1px 0 100vmax var(--line);clip-path:inset(0 -100vmax 0 -100vmax);display:flex;flex-direction:column;gap:0.625rem">
+      <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center">
+        <label for="ap-q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search projects</label>
+        <div style="flex:1 1 16rem;min-width:0;position:relative;display:flex;align-items:center">
+          <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" style="position:absolute;left:0.875rem;display:block;color:var(--ink-2);pointer-events:none"><circle cx="7.5" cy="7.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"></circle><path d="M11.8 11.8 16 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+          <input id="ap-q" type="search" value="{{ q }}" onChange="{{ onQ }}" placeholder="Search by project, client or tool" autocomplete="off" style="width:100%;min-height:48px;padding:0 0.875rem 0 2.625rem;border:1px solid var(--line-strong);border-radius:6px;background:var(--surface);color:var(--ink);font:inherit">
+        </div>
+        <div role="group" aria-label="Filter by category" style="flex:none;max-width:100%;overflow-x:auto;scrollbar-width:none;display:flex;padding:3px;border-radius:8px;background:var(--surface);border:1px solid var(--line)">
+          <sc-for list="{{ cats }}" as="c" hint-placeholder-count="3">
+            <button type="button" aria-pressed="{{ c.on }}" onClick="{{ c.pick }}" style="white-space:nowrap;min-height:40px;padding:0 0.875rem;border:0;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9375rem;display:flex;align-items:center;gap:0.375rem;transition:background 200ms,color 200ms;background:{{ c.bg }};color:{{ c.ink }}">{{ c.label }}<span style="font-size:0.8125rem;font-weight:500;opacity:0.8">{{ c.count }}</span></button>
+          </sc-for>
+        </div>
+      </div>
+      <span role="status" style="font-size:0.875rem;color:var(--ink-2)">{{ status }}</span>
+    </div>
+    <sc-if value="{{ empty }}">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;padding:4rem 1rem;text-align:center">
+        <p style="margin:0;color:var(--ink-2)">No projects match that search.</p>
+        <button type="button" onClick="{{ clear }}" style="white-space:nowrap;min-height:44px;padding:0 1rem;background:transparent;border:1px solid var(--ink);border-radius:6px;cursor:pointer;font-weight:600">Clear search</button>
+      </div>
+    </sc-if>
+    <div ref="{{ gridRef }}" aria-busy="{{ busy }}" style="display:flex;flex-direction:column;gap:clamp(2.5rem,6vw,4rem)">
+      <sc-if value="{{ hasClient }}">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <sc-for list="{{ cols }}" as="col" hint-placeholder-count="3">
+          <div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:12px;margin-top:{{ col.offset }}">
+            <sc-for list="{{ col.tiles }}" as="t" hint-placeholder-count="2">
+              <div style="position:relative">
+              <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;overflow:hidden;display:flex;flex-direction:column;border-radius:12px;background:var(--surface);box-shadow:0 1px 2px rgba(20,36,58,0.06),0 4px 12px rgba(20,36,58,0.08),0 16px 32px rgba(20,36,58,0.08);pointer-events:none;transition:opacity .45s ease;opacity:{{ skelOp }}">
+                <div style="width:100%;aspect-ratio:{{ t.ratio }};background:#EBF0F7"></div>
+                <div style="display:flex;flex-direction:column;gap:0.5rem;padding:1rem 1.125rem 1.125rem">
+                  <div style="display:flex;gap:0.375rem"><span style="width:4.75rem;height:1.375rem;border-radius:999px;background:#EBF0F7"></span><span style="width:3.75rem;height:1.375rem;border-radius:999px;background:#EBF0F7"></span></div>
+                  <span style="display:block;width:68%;height:1rem;margin:0.19rem 0;border-radius:4px;background:#EBF0F7"></span>
+                  <div style="display:flex;flex-direction:column;gap:0.55rem;padding:0.28rem 0"><span style="display:block;width:100%;height:0.85rem;border-radius:4px;background:#EBF0F7"></span><span style="display:block;width:82%;height:0.85rem;border-radius:4px;background:#EBF0F7"></span></div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;padding-top:0.5rem;border-top:1px solid var(--line);min-height:1.8125rem"><span style="width:45%;height:0.8rem;border-radius:4px;background:#EBF0F7"></span><span style="width:4.5rem;height:0.8rem;border-radius:4px;background:#EBF0F7"></span></div>
+                </div>
+                {{ shimmer }}
+              </div>
+              <div style="display:flex;flex-direction:column;min-width:0;transition:opacity .45s ease;opacity:{{ realOp }}">
+              <a href="{{ t.url }}" target="{{ t.target }}" rel="noopener noreferrer" onClick="{{ t.open }}" aria-haspopup="{{ t.popup }}" data-tile="" style="display:flex;flex-direction:column;border-radius:12px;overflow:hidden;background:var(--surface);color:var(--ink);text-decoration:none;box-shadow:0 1px 2px rgba(20,36,58,0.06),0 4px 12px rgba(20,36,58,0.08),0 16px 32px rgba(20,36,58,0.08);opacity:0;transform:translateY(24px) scale(.96);transition:opacity 700ms linear(0, 0.094 5.6%, 0.274 11.1%, 0.455 16.7%, 0.608 22.2%, 0.726 27.8%, 0.812 33.3%, 0.873 38.9%, 0.944 50%, 0.976 61.1%, 1 100%),transform 700ms linear(0, 0.094 5.6%, 0.274 11.1%, 0.455 16.7%, 0.608 22.2%, 0.726 27.8%, 0.812 33.3%, 0.873 38.9%, 0.944 50%, 0.976 61.1%, 1 100%),box-shadow 300ms;transition-delay:{{ t.delay }}" style-hover="color:var(--ink);box-shadow:0 2px 4px rgba(20,36,58,0.08),0 8px 20px rgba(20,36,58,0.12),0 24px 48px rgba(20,36,58,0.14)">
+                <img decoding="async" src="{{ t.img }}" alt="{{ t.alt }}" width="1600" height="1000" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:{{ t.ratio }};object-fit:cover;object-position:top;background:#E9ECF1">
+                <span style="display:flex;flex-direction:column;gap:0.5rem;padding:1rem 1.125rem 1.125rem">
+                  <span style="display:flex;flex-wrap:wrap;gap:0.375rem">
+                    <sc-for list="{{ t.badges }}" as="b" hint-placeholder-count="1">
+                      <span style="white-space:nowrap;font-size:0.75rem;font-weight:700;padding:0.1875rem 0.5rem;border-radius:999px;background:{{ b.bg }};color:{{ b.ink }}">{{ b.label }}</span>
+                    </sc-for>
+                  </span>
+                  <strong style="font-weight:600;font-size:1.0625rem;line-height:1.3">{{ t.title }}</strong>
+                  <span style="font-size:0.9375rem;line-height:1.618;color:var(--ink-2)">{{ t.line }}</span>
+                  <span style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;padding-top:0.5rem;border-top:1px solid var(--line);font-size:0.875rem">
+                    <span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink-2)">{{ t.client }}</span>
+                    <span style="white-space:nowrap;display:flex;align-items:center;gap:0.375rem;font-weight:600;color:var(--accent-ink)">{{ t.cta }}<svg width="12" height="12" viewBox="0 0 14 14" aria-hidden="true" style="display:block;flex:none"><path d="M4 10 10 4M5 4h5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+                  </span>
+                  <span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">{{ t.sr }}</span>
+                </span>
+              </a>
+              </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+  
+      </sc-if>
+    </div>
+  </div>
+</main>
+<footer style="border-top:1px solid var(--line)">
+  <div style="max-width:72rem;margin:0 auto;padding:1.5rem clamp(1rem,4vw,2.5rem);display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;font-size:0.9375rem;color:var(--ink-2)">
+    <span>© 2026 James Albert Salva</span>
+    <a href="/#contact">Start a conversation</a>
+  </div>
+</footer>
+<sc-if value="{{ galOpen }}">
+  <div onClick="{{ galClose }}" style="position:fixed;inset:0;z-index:60;background:rgba(20,36,58,0.55);display:flex;align-items:center;justify-content:center;padding:clamp(0.5rem,3vw,2rem)">
+    <div role="dialog" aria-modal="true" aria-labelledby="gal-title" tabindex="-1" ref="{{ galRef }}" onClick="{{ galStop }}" style="width:min(100%,72rem);max-height:100%;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);border-radius:14px;overflow:hidden;box-shadow:0 24px 64px rgba(20,36,58,0.35);outline:none">
+      <div style="display:flex;flex-direction:column;gap:1rem;padding:clamp(1rem,3vw,1.5rem) clamp(1rem,3vw,1.75rem);border-bottom:1px solid var(--line)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem">
+          <div style="display:flex;flex-direction:column;gap:0.25rem;min-width:0">
+            <span style="font-size:0.875rem;color:var(--ink-2)">{{ galClient }}</span>
+            <h2 id="gal-title" style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(1.5rem,3vw,2rem);line-height:1.15">{{ galTitle }}</h2>
+          </div>
+          <button type="button" onClick="{{ galClose }}" aria-label="Close screens" style="flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);background:transparent;color:var(--ink);cursor:pointer;font-size:1.25rem;line-height:1">×</button>
+        </div>
+        <div role="tablist" aria-label="Screen categories" style="display:flex;gap:0.5rem;overflow-x:auto;scrollbar-width:none">
+          <sc-for list="{{ galTabs }}" as="g" hint-placeholder-count="3">
+            <button type="button" role="tab" aria-selected="{{ g.on }}" onClick="{{ g.pick }}" style="flex:none;white-space:nowrap;min-height:40px;padding:0 1rem;border-radius:999px;border:1px solid var(--ink);background:{{ g.bg }};color:{{ g.ink }};font:inherit;font-weight:600;font-size:0.9375rem;cursor:pointer;display:flex;align-items:center;gap:0.5rem">{{ g.label }}<span style="font-weight:500;opacity:0.7">{{ g.n }}</span></button>
+          </sc-for>
+        </div>
+      </div>
+      <div ref="{{ galBody }}" role="tabpanel" style="flex:1 1 auto;min-height:0;overflow-y:auto;padding:clamp(1rem,3vw,1.75rem);display:flex;flex-direction:column;gap:2rem;background:#EEF0F4">
+        <sc-for list="{{ galSets }}" as="st" hint-placeholder-count="2">
+          <div style="display:flex;flex-direction:column;gap:0.75rem">
+            <sc-if value="{{ st.hasV }}"><span style="font-size:0.8125rem;font-weight:700;letter-spacing:0.06em;color:var(--ink-2)">VERSION {{ st.v }}</span></sc-if>
+            <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-start">
+              <sc-for list="{{ st.shots }}" as="sh" hint-placeholder-count="3">
+                <figure style="margin:0;flex:{{ sh.flex }};min-width:0;display:flex;flex-direction:column;gap:0.5rem">
+                  <a href="{{ sh.src }}" target="_blank" rel="noopener noreferrer" style="display:block;border-radius:10px;overflow:hidden;background:#FFFFFF;box-shadow:0 1px 2px rgba(20,36,58,0.08),0 8px 24px rgba(20,36,58,0.10)"><img decoding="async" src="{{ sh.src }}" alt="{{ sh.alt }}" loading="lazy" style="display:block;width:100%;height:auto"></a>
+                  <figcaption style="font-size:0.8125rem;color:var(--ink-2);text-transform:capitalize">{{ sh.label }}</figcaption>
+                </figure>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const TECH_masspro = ['HTML5', 'SCSS', 'JavaScript', 'Responsive'];
+const TECH_landing = ['Component system', 'HTML5', 'CSS', 'JavaScript'];
+const TECH_corporate = ['Responsive', 'Technical SEO', 'HTML5', 'CSS'];
+const TECH_animation = ['CSS animation', 'JavaScript', 'Performance'];
+const TECH_qa = ['QA testing', 'Cross-browser', 'HTML5', 'CSS'];
+const SCR = (dir, key, vs) => vs.map(v => ({ v: v.toUpperCase(), shots: ['desktop', 'tablet', 'mobile'].map(d => ({ src: 'assets/' + dir + '/' + key + '-' + v + '-' + d + '.png', device: d })) }));
+const PROJECTS = [
+  { id: 'masspro', client: "Iwatani · Hydrogen fuel cell ship", url: 'https://www.iwatani.co.jp/jpn/hydrogenfuelcellship/', title: "Revamping Mass Pro Pages and Landing Pages", tag: 'UI/UX and web development', year: 'Redesign', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_masspro, line: "Redesigned and optimized multiple high-traffic pages to improve UI consistency, performance and user experience across devices.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Redesigned and optimized multiple high-traffic pages to improve UI consistency, performance and user experience across devices." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'landing', client: "SMBC · Amulet", url: 'https://www.smbc.co.jp/hojin/sonota/factoring/Amulet/', title: "Landing Page Systems", tag: 'Design system', year: 'Components', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_landing, line: "Built a scalable landing page system with reusable components for faster deployment, consistency and conversion-focused design.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Built a scalable landing page system with reusable components for faster deployment, consistency and conversion-focused design." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'corporate', client: "transcosmos · Digital Interactive", url: 'https://www.trans-cosmos.co.jp/di/project/', title: "Corporate Website", tag: 'Web development', year: 'SEO', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_corporate, line: "Developed a responsive, SEO-optimized corporate website aligned with brand identity and modern UX standards.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Developed a responsive, SEO-optimized corporate website aligned with brand identity and modern UX standards." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'animation', client: "Asahi Soft Drinks · Roblox experience", url: 'https://www.asahiinryo.co.jp/entertainment/metaverse_factory/', title: "Redesigning Pages with Animations", tag: 'UI and motion', year: 'Animation', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_animation, line: "Enhanced existing pages with smooth, performance-friendly animations and modern UI improvements to boost engagement.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Enhanced existing pages with smooth, performance-friendly animations and modern UI improvements to boost engagement." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'qa', client: "LION · CHARMY Magica", url: 'https://magica.lion.co.jp/', title: "Page Redevelopment and Quality Assurance", tag: 'Development and QA', year: 'Quality', cats: ["dev"], role: 'Senior Lead Developer/Designer', tech: TECH_qa, line: "Redeveloped existing pages and tested them across devices and browsers before release.", badge: 'Project',
+    blocks: [{ h: 'Overview', p: "Redeveloped existing pages and tested them across devices and browsers before release." }, { h: 'Role', p: 'Interface design and frontend development as Senior Lead Developer/Designer.' }] },
+  { id: 'stepwright', own: true, client: "Own product · Stepwright", url: 'https://stepwright.onrender.com/', title: "Stepwright", tag: 'Prompt library', cats: ["dev","own"], role: 'Designer and developer', tech: ["AI prompts","Workflow","HTML5","JavaScript"], line: "Ready-to-paste Claude prompts, anti-slop rules and a workflow composer for UI design and frontend work.", img: 'assets/img_project_06.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'atlas', own: true, client: "Own product · Design Atlas", url: 'https://design-atlas.onrender.com/', title: "Design Atlas", tag: 'Resource hub', cats: ["dev","own"], role: 'Designer and developer', tech: ["Catalog","JSON","Search","JavaScript"], line: "A curated index of UI kits, design systems, icons, fonts and tools, each listed with its creator and licence.", img: 'assets/img_project_07.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'orvanta', own: true, client: "Own product · Orvanta", url: 'https://orvanta.onrender.com/', title: "Orvanta", tag: 'Order tracker', cats: ["dev","own"], role: 'Designer and developer', tech: ["Web app","Dark mode","JavaScript","Local storage"], line: "Track orders shipped from China to the Philippines: CNY and PHP prices, tracking numbers and status from warehouse to door.", img: 'assets/img_project_08.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'marklith', own: true, client: "Own product · marklith", url: 'https://marklith.onrender.com/', title: "marklith", tag: 'Image to Markdown', cats: ["dev","own"], role: 'Designer and developer', tech: ["OCR","Markdown","JavaScript","Privacy-first"], line: "Extract text from screenshots and photos in the browser, correct it, and copy it as Markdown, an outline or prompt-ready text.", img: 'assets/img_project_09.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'hybridcam', own: true, client: "Own product · hybrid.cam", url: 'https://hybrid-cam-v2.onrender.com/', title: "hybrid.cam", tag: 'Marketplace', cats: ["dev","own"], role: 'Designer and developer', tech: ["Marketplace", "Escrow", "MapLibre", "Admin console", "JavaScript"], line: "An escrowed camera marketplace for Metro Manila: rider inspection, live tracking and payment released only on approval.", img: 'assets/img_project_10.jpg', ratio: '925/539', badge: 'Product' },
+  { id: 'harborline', own: true, client: "Own product · Harborline", url: 'https://harborline-site.onrender.com/', title: "Harborline", tag: 'SaaS landing page', cats: ["dev","own"], role: 'Designer and developer', tech: ["SaaS", "Design system", "Responsive", "Tokens", "HTML5", "CSS"], line: "Marketing site and design system for freight operations software: load triage, carrier vetting and rate confirmations on one board.", img: 'assets/harborline/og-image.png', ratio: '1200/630', badge: 'Product' },
+  { id: 'invoicify', client: "Invoicify · Website", url: 'assets/img_project_12.png', title: "Invoicify Website", tag: 'UI/UX design', cats: ["design"], role: 'UI/UX Designer', tech: ["Figma", "Design system", "Landing pages", "Tokens"], line: "Marketing site and design system for a BIR-accredited e-invoicing platform, with industry pages for e-commerce and exporters.", img: 'assets/img_project_12.png', ratio: '4/3', badge: 'Project',
+    screens: [{ group: 'Landing pages', sets: [{ v: '', shots: [{ src: 'assets/img_project_12.png', device: 'Home' }, { src: 'assets/invoicify/ecommerce.png', device: 'E-commerce' }, { src: 'assets/invoicify/exporters.png', device: 'Exporters' }] }] }, { group: 'Design system', sets: [{ v: '', shots: [{ src: 'assets/invoicify/design-system.png', device: 'Tokens & components' }] }] }] },
+  { id: 'invoicify-portal', client: "Invoicify · Web portal", url: 'assets/img_project_13.png', title: "Invoicify Web Portal", tag: 'UI/UX design', cats: ["design"], role: 'UI/UX Designer', tech: ["Figma", "Responsive", "Auth flows", "Design system"], line: "Login, company registration, forgot password and account verification screens for the Invoicify portal, designed for desktop, tablet and mobile.", img: 'assets/img_project_13.png', ratio: '16/9', badge: 'Project',
+    screens: [{ group: 'Login', sets: SCR('invoicify-portal', 'login', ['v1', 'v2']) }, { group: 'Registration', sets: SCR('invoicify-portal', 'register', ['v1', 'v2']) }, { group: 'Forgot password', sets: SCR('invoicify-portal', 'forgot', ['v1', 'v2']) }, { group: 'Account verification', sets: SCR('invoicify-portal', 'verify', ['v1', 'v2']) }] },
+  { id: 'todonify', client: "Todonify · Web application", url: 'assets/todonify/desktop-dashboard.png', title: "Todonify Web Application", tag: 'UI/UX design', cats: ["design"], role: 'UI/UX Designer', tech: ["Figma", "Design system", "Responsive", "Web app"], line: "Task manager web app with a sidebar dashboard, task detail and add-task modals, and a matching mobile layout built on its own design tokens.", img: 'assets/todonify/desktop-dashboard.png', ratio: '3/2', badge: 'Project',
+    screens: [{ group: 'Desktop', sets: [{ v: '', shots: [{ src: 'assets/todonify/desktop-dashboard.png', device: 'Dashboard' }, { src: 'assets/todonify/desktop-view.png', device: 'View task' }, { src: 'assets/todonify/desktop-add.png', device: 'Add task' }] }] }, { group: 'Mobile', sets: [{ v: '', shots: [{ src: 'assets/todonify/mobile-dashboard.png', device: 'Dashboard' }, { src: 'assets/todonify/mobile-view.png', device: 'View task' }, { src: 'assets/todonify/mobile-add.png', device: 'Add task' }] }] }, { group: 'Design system', sets: [{ v: '', shots: [{ src: 'assets/todonify/design-system.png', device: 'Tokens & components' }] }] }] },
+  { id: 'busybee', client: "BusyBee · Mobile application", url: 'assets/busybee/thumb.png', title: "BusyBee Mobile Application", tag: 'UI/UX design', cats: ["design"], role: 'UI/UX Designer', tech: ["Figma", "Design system", "Mobile", "Grayscale UI"], line: "Grayscale mobile app screens for login, user details and a paginated team members table, all driven by one color and type system.", img: 'assets/busybee/thumb.png', ratio: '16/10', badge: 'Project',
+    screens: [{ group: 'Screens', sets: [{ v: '', shots: [{ src: 'assets/busybee/login.png', device: 'Login form' }, { src: 'assets/busybee/user-details.png', device: 'User details list' }, { src: 'assets/busybee/team-members.png', device: 'Team members table' }] }] }, { group: 'Design system', sets: [{ v: '', shots: [{ src: 'assets/busybee/design-system.png', device: 'Color & typography' }] }] }] }
+];
+PROJECTS.forEach(p => { if (p.screens) p.cats = p.cats.filter(c => c !== 'dev'); });
+
+const THUMBS = new Set(['img_project_01.jpg','img_project_02.jpg','img_project_03.jpg','img_project_04.jpg','img_project_05.jpg','img_project_06.png','img_project_07.png','img_project_08.png','img_project_09.png','img_project_10.jpg','img_project_11.png','img_project_12.png','img_project_13.png','todonify/desktop-dashboard.png','busybee/thumb.png','harborline/og-image.png']);
+const TH = s => { const k = String(s || '').replace(/^\.?\/?assets\//, ''); return THUMBS.has(k) ? 'assets/thumbs/' + k.replace('/', '-').replace(/\.\w+$/, '.webp') : s; };
+class Component extends DCLogic {
+  galRef = React.createRef(); galBody = React.createRef();
+  closeGal = () => { this.setState({ gal: null }); document.body.style.overflow = ''; const f = this.lastFocus; f && f.focus && setTimeout(() => f.focus(), 0); };
+  state = { gal: null, gi: 0, q: '', cat: 'all', w: typeof window !== 'undefined' ? window.innerWidth : 1280, pill: false, pillInset: 24, menu: false, loading: true };
+  startLoad = (first) => { clearTimeout(this.lT); cancelAnimationFrame(this.lR); const id = (this.lId = (this.lId || 0) + 1), t0 = Date.now(), min = first ? 700 : 450;
+    if (!this.state.loading) this.setState({ loading: true });
+    const finish = () => { if (id !== this.lId) return; this.lT = setTimeout(() => id === this.lId && this.setState({ loading: false }), Math.max(0, min - (Date.now() - t0))); };
+    this.lR = requestAnimationFrame(() => { const root = this.gridRef.current; const imgs = root ? [...root.querySelectorAll('img')].filter(i => { const b = i.getBoundingClientRect(); return b.top < window.innerHeight && b.bottom > 0 && !i.complete; }) : [];
+      Promise.race([Promise.all(imgs.map(i => new Promise(res => { i.addEventListener('load', res, { once: true }); i.addEventListener('error', res, { once: true }); }))), new Promise(res => setTimeout(res, 2500))]).then(finish); }); };
+  gridRef = React.createRef(); sentinelRef = React.createRef(); hdrInner = React.createRef(); menuClose = React.createRef();
+  openMenu = () => { this.lastFocus = document.activeElement; this.setState({ menu: true }, () => setTimeout(() => this.menuClose.current && this.menuClose.current.focus(), 0)); };
+  closeAll = () => { if (!this.state.menu) return; this.setState({ menu: false }, () => this.lastFocus && this.lastFocus.focus && this.lastFocus.focus({ preventScroll: true })); };
+  componentDidMount() {
+    this.onGalKey = (e) => { if (e.key === 'Escape' && this.state.gal) this.closeGal(); }; window.addEventListener('keydown', this.onGalKey);
+    this.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    try { const d = JSON.parse(localStorage.getItem('jas-display') || '{}'); if (d.size && d.size !== 'm') document.documentElement.dataset.size = d.size; if (d.contrast === 'hc') document.documentElement.dataset.theme = 'hc'; } catch (e) {}
+    this.measurePill = () => { const el = this.hdrInner.current; if (!el) return; const r = el.getBoundingClientRect(); const pad = parseFloat(getComputedStyle(el).paddingLeft) || 16; this.setState({ pillInset: Math.max(6, Math.round(r.left + pad + 26 - 18)) }); };
+    this.onResize = () => { this.setState({ w: window.innerWidth }); this.measurePill(); };
+    window.addEventListener('resize', this.onResize); this.measurePill();
+    this.onKey = e => { if (e.key === 'Escape') this.closeAll(); }; window.addEventListener('keydown', this.onKey);
+    const sen = this.sentinelRef.current;
+    if (sen && 'IntersectionObserver' in window) { this.hio = new IntersectionObserver(([en]) => this.setState({ pill: !en.isIntersecting })); this.hio.observe(sen); }
+    const cat = new URLSearchParams(location.search).get('cat');
+    if (cat === 'dev' || cat === 'design' || cat === 'own') this.setState({ cat });
+    this.observe();
+    this.startLoad(true);
+  }
+  componentDidUpdate() { clearTimeout(this.oT); this.oT = setTimeout(() => this.observe(), 30); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); window.removeEventListener('keydown', this.onKey); this.hio && this.hio.disconnect(); this.io && this.io.disconnect(); clearTimeout(this.oT); clearTimeout(this.lT); cancelAnimationFrame(this.lR); }
+  observe() {
+    const root = this.gridRef.current; if (!root) return;
+    const show = el => { el.style.opacity = '1'; el.style.transform = 'none'; el.dataset.seen = '1'; };
+    const tiles = [...root.querySelectorAll('[data-tile]')].filter(el => !el.dataset.seen && !el.dataset.watch);
+    if (this.reduce || !('IntersectionObserver' in window)) { tiles.forEach(el => { el.style.transition = 'none'; show(el); }); return; }
+    if (!this.io) this.io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { show(en.target); this.io.unobserve(en.target); } }), { threshold: 0.15 });
+    tiles.forEach(el => { el.dataset.watch = '1'; const r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) requestAnimationFrame(() => show(el)); else this.io.observe(el); });
+  }
+  renderVals() {
+    const s = this.state, q = s.q.trim().toLowerCase();
+    const match = p => !q || [p.title, p.client, p.tag, p.line, ...(p.tech || [])].join(' ').toLowerCase().includes(q);
+    const inCat = (p, c) => c === 'all' || p.cats.includes(c);
+    const list = PROJECTS.filter(p => match(p) && inCat(p, s.cat));
+    const nc = s.w < 640 ? 1 : s.w < 1000 ? 2 : 3;
+    const ratios = ['16/10', '2/1', '16/9', '3/2', '16/10'];
+    const build = arr => { const cols = Array.from({ length: nc }, () => []); arr.forEach((p, i) => { const pi = PROJECTS.indexOf(p);
+      const gal = !!p.screens; cols[i % nc].push({ target: gal ? undefined : '_blank', popup: gal ? 'dialog' : undefined, cta: gal ? 'View screens' : 'Live site', sr: gal ? '(opens a screen gallery)' : '(opens in a new tab)', open: gal ? (e) => { e.preventDefault(); this.lastFocus = e.currentTarget; this.setState({ gal: p.id, gi: 0 }, () => { document.body.style.overflow = 'hidden'; setTimeout(() => this.galRef.current && this.galRef.current.focus(), 0); }); } : undefined, title: p.title, client: p.client, line: p.line, url: p.url, img: TH(p.img || ('assets/img_project_0' + (pi + 1) + '.jpg')), alt: 'Screenshot of ' + p.title + ' for ' + p.client, ratio: p.ratio || ratios[pi % ratios.length], delay: (i * 100) + 'ms',
+        badges: [...(p.own ? [{ label: 'Own product', bg: '#E2F0E8', ink: '#1F6B45' }] : []), ...(p.cats.includes('dev') ? [{ label: 'Front-end', bg: '#FBE4E5', ink: '#9E1419' }] : []), ...(p.cats.includes('design') ? [{ label: 'Design', bg: '#E3E9FB', ink: '#1F3C9C' }] : [])] }); }); return cols.map((t, i) => ({ tiles: t, offset: nc > 1 && i === 1 ? '14px' : '0px' })); };
+    const clientList = list.filter(p => !p.own), ownList = list.filter(p => p.own);
+    const cnt = c => PROJECTS.filter(p => match(p) && inCat(p, c)).length;
+    return {
+      q: s.q, onQ: e => { this.setState({ q: e.target.value }); this.startLoad(); }, clear: () => this.setState({ q: '', cat: 'all' }),
+      cats: [['all', 'All'], ['dev', 'Front-end'], ['design', 'Design'], ['own', 'Own products']].map(([k, l]) => ({ label: l, count: cnt(k), on: s.cat === k, bg: s.cat === k ? 'var(--ink)' : 'transparent', ink: s.cat === k ? 'var(--on-ink)' : 'var(--ink)', pick: () => { if (s.cat !== k) { this.setState({ cat: k }); this.startLoad(); } } })),
+      cols: build([...clientList, ...ownList]), hasClient: list.length > 0,
+      wide: s.w >= 980, narrow: s.w < 980, menu: s.menu, openMenu: this.openMenu, closeAll: this.closeAll, menuClose: this.menuClose,
+      sentinelRef: this.sentinelRef, hdrInner: this.hdrInner,
+      navItems: [['work', 'Work'], ['expertise', 'Stack'], ['experience', 'Experience'], ['about', 'About'], ['resources', 'Resources']].map(([id, label]) => ({ href: 'index.html#' + id, label, on: id === 'work', off: id !== 'work' })),
+      hdrClip: s.pill ? 'inset(0 ' + s.pillInset + 'px 0 ' + s.pillInset + 'px round 999px)' : 'inset(0 0 0 0 round 0px)',
+      hdrTf: s.pill ? 'translateY(5px)' : 'translateY(0)', hdrShadow: s.pill ? 'drop-shadow(0 10px 24px rgba(20,36,58,0.16))' : 'drop-shadow(0 0 0 rgba(20,36,58,0))',
+      hdrLine: s.pill ? 'transparent' : 'var(--line)', logoTf: s.pill ? 'translateX(26px)' : 'translateX(0)', ctaTf: s.pill ? 'translateX(-26px)' : 'translateX(0)',
+      ...(() => { const gp = PROJECTS.find(x => x.id === s.gal); if (!gp) return { galOpen: false };
+        const g = gp.screens[s.gi] || gp.screens[0];
+        return { galOpen: true, galTitle: gp.title, galClient: gp.client, galLine: gp.line, galClose: this.closeGal, galStop: (e) => e.stopPropagation(), galRef: this.galRef,
+          galTabs: gp.screens.map((x, i) => ({ label: x.group, n: x.sets.reduce((a, st) => a + st.shots.length, 0), on: i === s.gi ? 'true' : 'false', bg: i === s.gi ? 'var(--ink)' : 'transparent', ink: i === s.gi ? 'var(--on-ink)' : 'var(--ink)', pick: () => { this.setState({ gi: i }); this.galBody.current && this.galBody.current.scrollTo({ top: 0 }); } })),
+          galSets: g.sets.map(st => ({ v: st.v, hasV: !!st.v, shots: st.shots.map(sh => ({ ...sh, alt: gp.title + ' · ' + g.group + (st.v ? ' ' + st.v : '') + ' · ' + sh.device, label: sh.device, flex: sh.device === 'tablet' ? '1.7 1 12rem' : sh.device === 'mobile' ? '0.9 1 8rem' : '3 1 20rem' })) })), galBody: this.galBody }; })(),
+      empty: !s.loading && list.length === 0, status: s.loading ? 'Loading projects…' : list.length === 1 ? '1 project' : list.length + ' projects',
+      busy: s.loading ? 'true' : 'false', skelOp: s.loading ? 1 : 0, skelVis: s.loading ? 'visible' : 'hidden', realOp: s.loading ? 0 : 1,
+      shimmer: this.reduce ? null : (this.shim || (this.shim = React.createElement('span', { 'aria-hidden': 'true', style: { position: 'absolute', top: 0, bottom: 0, left: 0, width: '55%', background: 'linear-gradient(100deg, transparent, rgba(255,255,255,.85), transparent)', transform: 'translateX(-120%)', animation: 'jas-shimmer 1.4s ease-in-out infinite', willChange: 'transform', pointerEvents: 'none' } }))), gridRef: this.gridRef
+    };
+  }
+}
+</script>
+</body>
+</html>

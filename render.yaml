@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: jas-portfolio
+    runtime: static
+    rootDir: deploy
+    buildCommand: ""
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      - path: /*
+        name: Permissions-Policy
+        value: camera=(), microphone=(), geolocation=()
+      - path: /*.html
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /support.js
+        name: Cache-Control
+        value: public, max-age=86400
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+    routes:
+      - type: rewrite
+        source: /projects
+        destination: /projects.html
+      - type: rewrite
+        source: /privacy
+        destination: /privacy.html
