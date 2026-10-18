@@ -1,0 +1,15 @@
+{
+  "name": "James Albert Salva (JAS) Portfolio",
+  "short_name": "JAS",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F6F2",
+  "theme_color": "#14243A",
+  "icons": [
+    {
+      "src": "assets/img_hero_design_01.webp",
+      "type": "image/webp",
+      "sizes": "512x512"
+    }
+  ]
+}

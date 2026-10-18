@@ -1,13 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <title>Privacy and terms · James Albert Salva (JAS)</title>
 <meta name="description" content="How this portfolio handles your data and the terms for using it.">
 <meta name="theme-color" content="#14243A">
@@ -18,19 +13,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-p,dd,blockquote,figcaption,li:not(:has(div,a,button,h3,ul,ol)){max-inline-size:66ch}
-h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#F7F6F2;color:#14243A;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:1rem;line-height:1.618;-webkit-font-smoothing:antialiased}
-a{color:#2F52C4;text-underline-offset:0.2em;text-decoration-thickness:1px}
-a:hover{color:#14243A}
-button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid #2F52C4;outline-offset:3px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-</style>
-</helmet>
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="css/privacy.css">
+<script src="js/runtime.js"></script>
+</head>
+<body>
+<x-dc>
 <header style="border-bottom:1px solid #DEDBD2;background:#F7F6F2;position:sticky;top:0;z-index:10">
   <div style="max-width:72rem;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem);min-height:4.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem">
     <a href="/" aria-label="JAS, James Albert Salva, portfolio home" style="display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:#14243A;min-height:44px">
@@ -90,8 +78,7 @@ button{font:inherit;color:inherit}
   </div>
 </footer>
 </x-dc>
-<script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {}
-</script>
+<script type="text/x-dc" data-dc-script src="js/privacy.js"></script>
+<noscript><p style="padding:2rem;font-family:system-ui,sans-serif">This site needs JavaScript enabled.</p></noscript>
 </body>
 </html>

@@ -2,9 +2,8 @@ services:
   - type: web
     name: jas-portfolio
     runtime: static
-    rootDir: deploy
-    buildCommand: ""
-    staticPublishPath: .
+    buildCommand: echo "Static site - no build step"
+    staticPublishPath: ./
     pullRequestPreviewsEnabled: false
     headers:
       - path: /*
@@ -19,12 +18,12 @@ services:
       - path: /*
         name: Permissions-Policy
         value: camera=(), microphone=(), geolocation=()
-      - path: /*.html
+      - path: /css/*
         name: Cache-Control
-        value: public, max-age=0, must-revalidate
-      - path: /support.js
+        value: public, max-age=3600
+      - path: /js/*
         name: Cache-Control
-        value: public, max-age=86400
+        value: public, max-age=3600
       - path: /assets/*
         name: Cache-Control
         value: public, max-age=31536000, immutable
