@@ -1,0 +1,11 @@
+x-dc{display:none!important}
+p,dd,blockquote,figcaption,li:not(:has(div,a,button,h3,ul,ol)){max-inline-size:66ch}
+h1,h2,h3{text-wrap:balance}p,li{text-wrap:pretty}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#F7F6F2;color:#14243A;font-family:'Schibsted Grotesk',system-ui,sans-serif;font-size:1rem;line-height:1.618;-webkit-font-smoothing:antialiased}
+a{color:#2F52C4;text-underline-offset:0.2em;text-decoration-thickness:1px}
+a:hover{color:#14243A}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #2F52C4;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
