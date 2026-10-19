@@ -25,9 +25,9 @@ const EXPERTISE = [
   { name: 'Platforms', line: 'Where the work usually lives.', items: ['WordPress', 'Shopify', 'Webflow', 'Framer', 'Squarespace', 'Salesforce', 'Sitecore', 'C#', 'ASP.NET', 'PHP', 'MySQL', 'AWS', 'Azure'] }
 ];
 const EXPERIENCE = [
-  { dates: 'April 2019 – May 2026', role: 'Senior Lead Developer/Designer', org: 'Transcosmos Asia Philippines Inc.', location: 'Pasig City', tags: ['UI/UX', 'Frontend lead', 'Enterprise web', 'Code review', 'Mentoring'], bullets: ['Designed and developed responsive web interfaces for enterprise-level applications.', 'Collaborated with cross-functional teams and stakeholders to translate business requirements into intuitive page structures, user flows, responsive interface solutions and efficient technical implementations.', 'Improved website performance, responsiveness, SEO and accessibility, and reduced load times across multiple projects.', 'Conducted code reviews and enforced development standards to ensure clean, maintainable and optimized code.', 'Mentored developers and provided technical guidance to support team growth and project delivery.'] },
-  { dates: 'April 2018 – March 2019', role: 'Software Engineer', org: 'Cusyma Technologies Co.', location: 'Quezon City', tags: ['Responsive UI', 'API integration', 'Cross-browser', 'Documentation'], bullets: ['Developed responsive web interfaces based on business requirements and UI/UX design specifications.', 'Worked closely with designers, QA and developers to ensure smooth project implementation and testing.', 'Supported API integration, cross-browser compatibility and technical documentation.', 'Troubleshot interface and frontend issues to improve functionality and overall user experience.'] },
-  { dates: 'November 2017 – February 2018', role: 'Front-End Developer', org: 'I-Asiatic Innovations', location: 'Pasig City', tags: ['Mockup to code', 'Responsive', 'Cross-device'], bullets: ['Translated UI/UX mockups into responsive, production-ready interfaces while maintaining visual consistency, usability and design intent.', 'Ensured website compatibility, performance and proper display across different devices and browsers.'] }
+  { dates: 'April 2019 – May 2026', role: 'Senior Lead Developer/Designer', org: 'Transcosmos Asia Philippines Inc.', location: 'Pasig City', tags: ['UI/UX', 'Frontend lead', 'Enterprise web', 'Performance', 'Code review', 'Mentoring'], bullets: ['Led and mentored a team of 3 members, achieving an 85% overall team productivity rate; team members were subsequently promoted at fiscal year-end.', 'Contributed to and delivered 100+ projects for local and international clients across frontend development, UI/UX design and responsive web implementation.', 'Developed responsive enterprise interfaces and reusable components to ensure consistency and maintainability.', 'Improved website PageSpeed scores from 55 to 90 through asset optimization, performance improvements and reduced page load times.', 'Conducted code reviews and supported functional and regression testing in collaboration with cross-functional teams.'] },
+  { dates: 'April 2018 – March 2019', role: 'Software Engineer', org: 'Cusyma Technologies Co.', location: 'Quezon City', tags: ['Responsive UI', 'API integration', 'Cross-browser', 'Documentation'], bullets: ['Developed responsive web interfaces based on business requirements and UI/UX design specifications.', 'Collaborated with designers, developers and QA personnel; supported API integration, cross-browser compatibility, technical documentation and troubleshooting.'] },
+  { dates: 'November 2017 – February 2018', role: 'Front-End Developer', org: 'I-Asiatic Innovations', location: 'Pasig City', tags: ['Mockup to code', 'Responsive', 'Performance'], bullets: ['Translated UI/UX mockups into responsive web interfaces while maintaining visual consistency.', 'Supported cross-browser compatibility, responsive layouts and frontend performance.'] }
 ];
 const THUMBS = new Set(['img_project_01.jpg','img_project_02.jpg','img_project_03.jpg','img_project_04.jpg','img_project_05.jpg','img_project_06.png','img_project_07.png','img_project_08.png','img_project_09.png','img_project_10.jpg','img_project_11.png','img_project_12.png','img_project_13.png','todonify/desktop-dashboard.png','busybee/thumb.png','harborline/og-image.png','img_cert_01_hd.jpg','img_cert_02_hd.jpg','img_cert_03_hd.jpg','img_cert_04_hd.jpg','img_cert_05_hd.jpg','img_cert_06_hd.jpg','img_cert_07_hd.jpg']);
 // Optimized 720px WebP derivatives in assets/thumbs/ for anything shown small; originals stay for full-size views.
@@ -265,6 +265,14 @@ class Component extends DCLogic {
     clearTimeout(this.ovT); this.ovT = setTimeout(() => this.finishClose(), 750);
   };
   finishClose() { if (!this.state.ovClosing) return; const k = this.state.ov; this.setState({ ov: null, ovClosing: false }); this.focusPill(k); }
+  downloadResume() {
+    const url = new URL('assets/James-Albert-Salva-Resume-2026.pdf', document.baseURI).href;
+    try {
+      const a = document.createElement('a');
+      a.href = url; a.download = 'James-Albert-Salva-Resume-2026.pdf'; a.target = '_blank'; a.rel = 'noopener';
+      document.body.appendChild(a); a.click(); a.remove();
+    } catch (e) { window.open(url, '_blank', 'noopener'); }
+  }
   focusPill(k) { const el = (k === 'a' ? this.pillARef : this.pillBRef).current; el && el.focus({ preventScroll: true }); }
   loadPdfJs() {
     if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
@@ -619,7 +627,7 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
     const items = [...NAV, ['contact', 'Contact']].map(([id, l]) => ({ label: l, keys: id, group: 'Section', act: () => this.jump(id) }));
     PROJECTS.forEach(p => items.push({ label: p.title, keys: p.tag + ' ' + p.tech.join(' '), group: 'Project', act: () => this.open('project', this.projClose, { project: p.id }) }));
     items.push({ label: 'Copy email address', keys: 'email copy hire', group: 'Action', act: () => { this.closeAll(); this.copyEmail(); } });
-    items.push({ label: 'Request r\u00e9sum\u00e9', keys: 'resume r\u00e9sum\u00e9 cv pdf download', group: 'Action', act: () => this.open('notice', this.noticeFirst) });
+    items.push({ label: 'Download r\u00e9sum\u00e9 (PDF)', keys: 'resume r\u00e9sum\u00e9 cv pdf download', group: 'Action', act: () => { this.closeAll(); (() => this.downloadResume())(); } });
     items.push({ label: 'Open LinkedIn', keys: 'linkedin social', group: 'Action', act: () => { this.closeAll(); window.open(LINKEDIN, '_blank', 'noopener'); } });
     items.push({ label: 'Display settings', keys: 'text size contrast accessibility', group: 'Action', act: () => this.open('display', this.sizeFirst) });
     const q = this.state.q.trim().toLowerCase();
@@ -821,7 +829,7 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
       openPalette: this.openPalette, closeAll: this.closeAll,
       openMenu: () => this.open('menu', this.menuClose),
       openDisplay: () => this.open('display', this.sizeFirst),
-      openResume: () => this.open('notice', this.noticeFirst),
+      openResume: (() => this.downloadResume()),
       skipToMain: (e) => { e.preventDefault(); this.jump('work'); },
       waterHost: this.waterHost, waterCanvas: this.waterCanvas,
       mainRef: this.mainRef, paletteInput: this.paletteInput, menuClose: this.menuClose, noticeFirst: this.noticeFirst, projClose: this.projClose
