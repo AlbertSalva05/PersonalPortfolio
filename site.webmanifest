@@ -1,5 +1,5 @@
 {
-  "name": "James Albert Salva (JAS) Portfolio",
+  "name": "James Albert Salva (JAS) · Portfolio",
   "short_name": "JAS",
   "start_url": "/",
   "display": "standalone",
@@ -11,5 +11,6 @@
       "type": "image/webp",
       "sizes": "512x512"
     }
-  ]
+  ],
+  "description": "Senior Lead Developer and UI/UX Designer with 8+ years building responsive web apps. 100+ projects delivered, reusable components, PageSpeed 55 → 90, and manual QA. Résumé available to download."
 }
