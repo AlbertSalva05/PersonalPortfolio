@@ -17,4 +17,4 @@ render.yaml robots.txt sitemap.xml site.webmanifest
 ## Notes
 - Pages must be served over http(s) — opening index.html straight from disk won't load the page scripts.
 - React, fonts and three.js load from public CDNs.
-- URLs assume `https://jas-portfolio.onrender.com`; if yours differs, find-and-replace it in the HTML files, robots.txt and sitemap.xml.
+- URLs assume `https://jas-portfolio-3z5b.onrender.com`; if yours differs, find-and-replace it in the HTML files, robots.txt and sitemap.xml.

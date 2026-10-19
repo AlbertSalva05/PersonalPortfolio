@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jas-portfolio.onrender.com/sitemap.xml
+Sitemap: https://jas-portfolio-3z5b.onrender.com/sitemap.xml
