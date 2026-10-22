@@ -29,7 +29,7 @@ const EXPERIENCE = [
   { dates: 'April 2018 – March 2019', role: 'Software Engineer', org: 'Cusyma Technologies Co.', location: 'Quezon City', tags: ['Responsive UI', 'API integration', 'Cross-browser', 'Documentation'], bullets: ['Developed responsive web interfaces based on business requirements and UI/UX design specifications.', 'Collaborated with designers, developers and QA personnel; supported API integration, cross-browser compatibility, technical documentation and troubleshooting.'] },
   { dates: 'November 2017 – February 2018', role: 'Front-End Developer', org: 'I-Asiatic Innovations', location: 'Pasig City', tags: ['Mockup to code', 'Responsive', 'Performance'], bullets: ['Translated UI/UX mockups into responsive web interfaces while maintaining visual consistency.', 'Supported cross-browser compatibility, responsive layouts and frontend performance.'] }
 ];
-const THUMBS = new Set(['img_project_01.jpg','img_project_02.jpg','img_project_03.jpg','img_project_04.jpg','img_project_05.jpg','img_project_06.png','img_project_07.png','img_project_08.png','img_project_09.png','img_project_10.jpg','img_project_11.png','img_project_12.png','img_project_13.png','todonify/desktop-dashboard.png','busybee/thumb.png','harborline/og-image.png','img_cert_01_hd.jpg','img_cert_02_hd.jpg','img_cert_03_hd.jpg','img_cert_04_hd.jpg','img_cert_05_hd.jpg','img_cert_06_hd.jpg','img_cert_07_hd.jpg']);
+const THUMBS = new Set(['img_project_01.jpg','img_project_02.jpg','img_project_03.jpg','img_project_04.jpg','img_project_05.jpg','img_project_06.png','img_project_07.png','img_project_08.png','img_project_09.png','img_project_10.jpg','img_project_11.png','img_project_12.png','img_project_13.png','todonify/desktop-dashboard.png','busybee/thumb.png','invoicify/thumb.png','invoicify-portal/thumb.png','moncrave/thumb.png','motivated/thumb.png','northlight/thumb.png','harborline/og-image.png','img_cert_01_hd.jpg','img_cert_02_hd.jpg','img_cert_03_hd.jpg','img_cert_04_hd.jpg','img_cert_05_hd.jpg','img_cert_06_hd.jpg','img_cert_07_hd.jpg']);
 // Optimized 720px WebP derivatives in assets/thumbs/ for anything shown small; originals stay for full-size views.
 const TH = (s, md) => { const k = String(s || '').replace(/^\.?\/?assets\//, ''); return THUMBS.has(k) ? 'assets/thumbs/' + k.replace('/', '-').replace('_hd', '').replace(/\.\w+$/, md ? '_md.webp' : '.webp') : s; };
 const CERT_PANELS = [
@@ -83,7 +83,7 @@ class Component extends DCLogic {
 
   loadWallProjects() {
     // Hero wall mirrors the "View all projects" page: read its PROJECTS list so new entries appear here automatically.
-    fetch('js/projects.js').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
+    fetch('js/projects.js?v=20261022h').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
       const a = t.indexOf('const TECH_'), b = t.indexOf('const PROJECTS = ['), e = t.indexOf('\n];', b);
       if (a < 0 || b < 0 || e < 0) return;
       const list = new Function(t.slice(a, e + 3) + '\nreturn PROJECTS;')();
@@ -410,7 +410,7 @@ class Component extends DCLogic {
     const nat = this.wallNat || (this.wallNat = {});
     proj.forEach(p => { if (nat[p.img] === undefined) { nat[p.img] = 0; const im = new Image(); im.onload = () => { nat[p.img] = im.naturalWidth / im.naturalHeight; clearTimeout(this.natT); this.natT = setTimeout(() => this.forceUpdate(), 60); }; im.src = p.img; } });
     const cols = Array.from({ length: nCol }, (_, c) => { const cs = proj.filter((_, j) => j % nCol === c); const rs = cs.map(p => Math.min(2.4, Math.max(1.25, nat[p.img] || 1.6))); const hs = rs.map(x => colW / x); const tot = hs.reduce((a, h) => a + h + 12, 0), need = viewH * 1.08 + Math.max(...hs) + 12; const k = tot < need ? need / tot : 1;
-      return cs.map((p, j) => { const rr = rs[j] / k, tall = (nat[p.img] || 1.6) < rr; return { ...p, ratio: rr.toFixed(3), pos: tall ? 'center top' : 'center center' }; }); });
+      return cs.map((p, j) => { const rr = rs[j] / k; return { ...p, ratio: rr.toFixed(3), pos: 'left top' }; }); });
     return {
       wall: cols.map((cs, i) => ({ dur: durs[i] + 's', delay: '0s', dir: i === 1 ? 'reverse' : 'normal', display: 'block', cards: [...cs.map(c => ({ ...c, hid: undefined })), ...cs.map(c => ({ ...c, alt: '', hid: 'true' }))] })),
       wallState: s.wallPaused ? 'paused' : 'running', wallPause: () => this.setState({ wallPaused: true }), wallPlay: () => this.setState({ wallPaused: false }),
