@@ -32,8 +32,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="css/home.css?v=20261022h">
-<script src="js/runtime.js?v=20261022h"></script>
+<link rel="stylesheet" href="css/home.css?v=20261024a">
+<script src="js/runtime.js?v=20261024a"></script>
 </head>
 <body>
 <x-dc>
@@ -177,7 +177,7 @@
           <span style="white-space:nowrap;font-size:0.9375rem;color:var(--ink-2);font-variant-numeric:tabular-nums"><strong style="color:var(--ink);font-weight:700">{{ deckCur }}</strong> / {{ deckTotal }}</span>
         </div>
         </div>
-        <div onPointerDown="{{ onDeckDown }}" onPointerUp="{{ onDeckUp }}" style="position:relative;aspect-ratio:5/4;touch-action:pan-y;user-select:none;perspective:1200px">
+        <div onPointerDown="{{ onDeckDown }}" onPointerUp="{{ onDeckUp }}" style="position:relative;aspect-ratio:16/11;touch-action:pan-y;user-select:none;perspective:1200px">
           <sc-for list="{{ deckCards }}" as="c" hint-placeholder-count="4">
             <div aria-hidden="{{ c.hidden }}" onClick="{{ c.click }}" style="position:absolute;inset:6% 10% 6% 0;cursor:pointer;transition:transform 700ms cubic-bezier(.2,.7,.2,1),opacity 500ms ease,filter 500ms;transform:{{ c.tf }};opacity:{{ c.op }};z-index:{{ c.z }};filter:{{ c.blur }};background-color:var(--surface);background-image:{{ c.bg }};background-size:cover;background-position:center top;overflow:hidden;border:1px solid var(--line-strong);border-radius:10px;box-shadow:0 30px 60px rgba(20,36,58,0.18);display:flex;flex-direction:column;justify-content:space-between;padding:1rem;transform-origin:left center">
               <span style="align-self:flex-start;margin-top:auto;white-space:nowrap;font-size:0.8125rem;font-weight:600;color:#FFFFFF;background:rgba(10,16,28,0.78);padding:0.25rem 0.625rem;border-radius:999px">{{ c.client }}</span>
@@ -737,7 +737,7 @@
   <span aria-hidden="true" style="position:absolute;right:calc(100% + 10px);top:50%;display:flex;align-items:center;gap:0.5rem;white-space:nowrap;padding:0.5rem 0.875rem;border-radius:999px;background:var(--ink);color:var(--on-ink);font-size:0.875rem;font-weight:600;line-height:1;box-shadow:0 8px 20px rgba(20,36,58,0.2);pointer-events:none;transition:opacity 250ms ease,transform 350ms cubic-bezier(.2,.7,.2,1);opacity:{{ ttLabelOp }};transform:{{ ttLabelTf }}">{{ ttLabel }}<span ref="{{ ttPct }}" style="font-weight:500;opacity:0.75;font-variant-numeric:tabular-nums">0%</span></span>
 </button>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;availability&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;open&quot;,&quot;roles&quot;,&quot;booking&quot;,&quot;closed&quot;],&quot;default&quot;:&quot;open&quot;,&quot;tsType&quot;:&quot;'open'|'roles'|'booking'|'closed'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;certCollapsed&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;gradient&quot;,&quot;solid&quot;,&quot;brand&quot;],&quot;default&quot;:&quot;gradient&quot;,&quot;tsType&quot;:&quot;'gradient'|'solid'|'brand'&quot;,&quot;section&quot;:&quot;Certifications&quot;},&quot;testimonialLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;peek&quot;,&quot;coverflow&quot;],&quot;default&quot;:&quot;peek&quot;,&quot;tsType&quot;:&quot;'peek'|'coverflow'&quot;,&quot;section&quot;:&quot;Testimonials&quot;},&quot;aboutStats&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bento&quot;,&quot;strip&quot;,&quot;ledger&quot;],&quot;default&quot;:&quot;bento&quot;,&quot;tsType&quot;:&quot;'bento'|'strip'|'ledger'&quot;,&quot;section&quot;:&quot;About&quot;}}" src="js/home.js?v=20261022h"></script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;availability&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;open&quot;,&quot;roles&quot;,&quot;booking&quot;,&quot;closed&quot;],&quot;default&quot;:&quot;open&quot;,&quot;tsType&quot;:&quot;'open'|'roles'|'booking'|'closed'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;certCollapsed&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;gradient&quot;,&quot;solid&quot;,&quot;brand&quot;],&quot;default&quot;:&quot;gradient&quot;,&quot;tsType&quot;:&quot;'gradient'|'solid'|'brand'&quot;,&quot;section&quot;:&quot;Certifications&quot;},&quot;testimonialLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;peek&quot;,&quot;coverflow&quot;],&quot;default&quot;:&quot;peek&quot;,&quot;tsType&quot;:&quot;'peek'|'coverflow'&quot;,&quot;section&quot;:&quot;Testimonials&quot;},&quot;aboutStats&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bento&quot;,&quot;strip&quot;,&quot;ledger&quot;],&quot;default&quot;:&quot;bento&quot;,&quot;tsType&quot;:&quot;'bento'|'strip'|'ledger'&quot;,&quot;section&quot;:&quot;About&quot;}}" src="js/home.js?v=20261024a"></script>
 <noscript><p style="padding:2rem;font-family:system-ui,sans-serif">This site needs JavaScript enabled.</p></noscript>
 </body>
 </html>
