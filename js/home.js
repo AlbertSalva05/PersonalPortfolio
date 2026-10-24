@@ -83,7 +83,7 @@ class Component extends DCLogic {
 
   loadWallProjects() {
     // Hero wall mirrors the "View all projects" page: read its PROJECTS list so new entries appear here automatically.
-    fetch('js/projects.js?v=20261022h').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
+    fetch('js/projects.js?v=20261024a').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
       const a = t.indexOf('const TECH_'), b = t.indexOf('const PROJECTS = ['), e = t.indexOf('\n];', b);
       if (a < 0 || b < 0 || e < 0) return;
       const list = new Function(t.slice(a, e + 3) + '\nreturn PROJECTS;')();
@@ -672,7 +672,7 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
     const n = PROJECTS.length;
     const cur = PROJECTS[s.deck];
     const poses = ['translate3d(0,0,0) rotate(0deg) scale(1)', 'translate3d(9%,-7%,0) rotate(3deg) scale(0.93)', 'translate3d(17%,-13%,0) rotate(6deg) scale(0.86)', 'translate3d(22%,-18%,0) rotate(8deg) scale(0.8)', 'translate3d(-14%,6%,0) rotate(-6deg) scale(0.9)'];
-    const deckCards = PROJECTS.map((p, i) => { const d = (i - s.deck + n) % n; return { ...card(p), tf: poses[d], op: d === n - 1 ? 0 : (d === 0 ? 1 : 1 - d * 0.18), z: 10 - d, blur: d === 0 ? 'none' : 'saturate(0.6)', hidden: d !== 0, click: () => d === 0 ? this.open('project', this.projClose, { project: p.id }) : this.setDeck(i) }; }).reverse();
+    const deckCards = PROJECTS.map((p, i) => { const d = (i - s.deck + n) % n; return { ...card(p), bg: "url('assets/thumbs/deck_project_0" + (i + 1) + ".webp')", tf: poses[d], op: d === n - 1 ? 0 : (d === 0 ? 1 : 1 - d * 0.18), z: 10 - d, blur: d === 0 ? 'none' : 'saturate(0.6)', hidden: d !== 0, click: () => d === 0 ? this.open('project', this.projClose, { project: p.id }) : this.setDeck(i) }; }).reverse();
     const certStyle = this.props.certCollapsed || 'gradient';
     const certFills = certStyle === 'solid' ? ['#14243A', '#1D3352', '#14243A', '#1D3352'] : certStyle === 'brand' ? ['linear-gradient(160deg,#2F52C4,#14243A)', 'linear-gradient(160deg,#B3191E,#3A0F14)'] : ['linear-gradient(160deg,#1D3352 0%,#2F52C4 100%)', 'linear-gradient(160deg,#14243A 0%,#24407E 100%)', 'linear-gradient(160deg,#1A2C48 0%,#3A5FD6 100%)'];
     const STACK = EXPERTISE;

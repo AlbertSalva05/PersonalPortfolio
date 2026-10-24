@@ -43,7 +43,7 @@ const PROJECTS = [
     screens: [{ group: 'Home page', sets: [{ v: '', shots: [{ src: 'assets/northlight/desktop.png', device: 'Desktop' }, { src: 'assets/northlight/tablet.png', device: 'Tablet' }, { src: 'assets/northlight/mobile.png', device: 'Mobile' }] }] }] }
 ];
 PROJECTS.forEach(p => { if (p.screens) p.cats = p.cats.filter(c => c !== 'dev'); });
-const IMGV = '20261022h'; PROJECTS.forEach(p => p.screens && p.screens.forEach(g => g.sets.forEach(st => st.shots.forEach(sh => { sh.src += '?v=' + IMGV; }))));
+const IMGV = '20261024a'; PROJECTS.forEach(p => p.screens && p.screens.forEach(g => g.sets.forEach(st => st.shots.forEach(sh => { sh.src += '?v=' + IMGV; }))));
 
 const THUMBS = new Set(['img_project_01.jpg','img_project_02.jpg','img_project_03.jpg','img_project_04.jpg','img_project_05.jpg','img_project_06.png','img_project_07.png','img_project_08.png','img_project_09.png','img_project_10.jpg','img_project_11.png','img_project_12.png','img_project_13.png','todonify/desktop-dashboard.png','busybee/thumb.png','invoicify/thumb.png','invoicify-portal/thumb.png','moncrave/thumb.png','motivated/thumb.png','northlight/thumb.png','harborline/og-image.png']);
 const TH = s => { const k = String(s || '').replace(/^\.?\/?assets\//, ''); return THUMBS.has(k) ? 'assets/thumbs/' + k.replace('/', '-').replace(/\.\w+$/, '.webp') : s; };
