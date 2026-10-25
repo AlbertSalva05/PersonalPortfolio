@@ -83,7 +83,7 @@ class Component extends DCLogic {
 
   loadWallProjects() {
     // Hero wall mirrors the "View all projects" page: read its PROJECTS list so new entries appear here automatically.
-    fetch('js/projects.js?v=20261024a').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
+    fetch('js/projects.js?v=20261025a').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
       const a = t.indexOf('const TECH_'), b = t.indexOf('const PROJECTS = ['), e = t.indexOf('\n];', b);
       if (a < 0 || b < 0 || e < 0) return;
       const list = new Function(t.slice(a, e + 3) + '\nreturn PROJECTS;')();
