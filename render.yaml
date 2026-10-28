@@ -18,6 +18,27 @@ services:
       - path: /*
         name: Permissions-Policy
         value: camera=(), microphone=(), geolocation=()
+      - path: /
+        name: Cache-Control
+        value: no-cache
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /projects
+        name: Cache-Control
+        value: no-cache
+      - path: /projects.html
+        name: Cache-Control
+        value: no-cache
+      - path: /privacy
+        name: Cache-Control
+        value: no-cache
+      - path: /privacy.html
+        name: Cache-Control
+        value: no-cache
+      - path: /404.html
+        name: Cache-Control
+        value: no-cache
       - path: /css/*
         name: Cache-Control
         value: no-cache
@@ -26,16 +47,22 @@ services:
         value: no-cache
       - path: /assets/*
         name: Cache-Control
-        value: public, max-age=31536000, immutable
+        value: no-cache
+      - path: /site.webmanifest
+        name: Cache-Control
+        value: no-cache
+      - path: /sitemap.xml
+        name: Cache-Control
+        value: no-cache
+      - path: /robots.txt
+        name: Cache-Control
+        value: no-cache
       - path: /assets/James-Albert-Salva-Resume-2026.pdf
         name: Content-Disposition
         value: attachment; filename="James-Albert-Salva-Resume-2026.pdf"
       - path: /resume.pdf
         name: Content-Disposition
         value: attachment; filename="James-Albert-Salva-Resume-2026.pdf"
-      - path: /assets/og-image.png
-        name: Cache-Control
-        value: public, max-age=86400
     routes:
       - type: rewrite
         source: /resume
