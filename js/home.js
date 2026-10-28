@@ -25,9 +25,9 @@ const EXPERTISE = [
   { name: 'Platforms', line: 'Where the work usually lives.', items: ['WordPress', 'Shopify', 'Webflow', 'Framer', 'Squarespace', 'Salesforce', 'Sitecore', 'C#', 'ASP.NET', 'PHP', 'MySQL', 'AWS', 'Azure'] }
 ];
 const EXPERIENCE = [
-  { dates: 'April 2019 – May 2026', role: 'Senior Lead Developer/Designer', org: 'Transcosmos Asia Philippines Inc.', location: 'Pasig City', tags: ['UI/UX', 'Frontend lead', 'Enterprise web', 'Performance', 'Code review', 'Mentoring'], bullets: ['Led and mentored a team of 3 members, achieving an 85% overall team productivity rate; team members were subsequently promoted at fiscal year-end.', 'Contributed to and delivered 100+ projects for local and international clients across frontend development, UI/UX design and responsive web implementation.', 'Developed responsive enterprise interfaces and reusable components to ensure consistency and maintainability.', 'Improved website PageSpeed scores from 55 to 90 through asset optimization, performance improvements and reduced page load times.', 'Conducted code reviews and supported functional and regression testing in collaboration with cross-functional teams.'] },
-  { dates: 'April 2018 – March 2019', role: 'Software Engineer', org: 'Cusyma Technologies Co.', location: 'Quezon City', tags: ['Responsive UI', 'API integration', 'Cross-browser', 'Documentation'], bullets: ['Developed responsive web interfaces based on business requirements and UI/UX design specifications.', 'Collaborated with designers, developers and QA personnel; supported API integration, cross-browser compatibility, technical documentation and troubleshooting.'] },
-  { dates: 'November 2017 – February 2018', role: 'Front-End Developer', org: 'I-Asiatic Innovations', location: 'Pasig City', tags: ['Mockup to code', 'Responsive', 'Performance'], bullets: ['Translated UI/UX mockups into responsive web interfaces while maintaining visual consistency.', 'Supported cross-browser compatibility, responsive layouts and frontend performance.'] }
+  { dates: 'April 2019 – May 2026', role: 'Senior Lead Developer/Designer', org: 'Transcosmos Asia Philippines Inc.', location: 'Pasig City', years: 'Apr 2019 – May 2026', icon: 'M12 19l7-7 3 3-7 7-3-3zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5zM2 2l7.586 7.586M13 11a2 2 0 1 1-4 0 2 2 0 0 1 4 0z', span: '7 yrs 2 mos', stats: [{ v: '100+', l: 'projects delivered' }, { v: '55 → 90', l: 'PageSpeed score' }, { v: '3', l: 'teammates mentored' }], skills: ['UI/UX design', 'Front-end lead', 'Enterprise web', 'Code review'], summary: 'Led design and front-end delivery on 100+ projects for local and international clients. Mentored a team of three, built reusable enterprise components and raised PageSpeed scores from 55 to 90.' },
+  { dates: 'April 2018 – March 2019', role: 'Software Engineer', org: 'Cusyma Technologies Co.', location: 'Quezon City', years: 'Apr 2018 – Mar 2019', icon: 'M16 18l6-6-6-6M8 6l-6 6 6 6', span: '1 yr', skills: ['Responsive UI', 'API integration', 'Cross-browser', 'Documentation'], summary: 'Built responsive web interfaces from business requirements and design specs, working with designers, developers and QA on API integration and cross-browser support.' },
+  { dates: 'November 2017 – February 2018', role: 'Front-End Developer', org: 'I-Asiatic Innovations', location: 'Pasig City', years: 'Nov 2017 – Feb 2018', icon: 'M3 4h18v16H3zM3 9h18M9 20V9', span: '4 mos', skills: ['Mockup to code', 'Responsive', 'Performance'], summary: 'Turned UI/UX mockups into responsive, cross-browser pages that stayed true to the design and loaded fast.' }
 ];
 const THUMBS = new Set(['img_project_01.jpg','img_project_02.jpg','img_project_03.jpg','img_project_04.jpg','img_project_05.jpg','img_project_06.png','img_project_07.png','img_project_08.png','img_project_09.png','img_project_10.jpg','img_project_11.png','img_project_12.png','img_project_13.png','todonify/desktop-dashboard.png','busybee/thumb.png','invoicify/thumb.png','invoicify-portal/thumb.png','moncrave/thumb.png','motivated/thumb.png','northlight/thumb.png','harborline/og-image.png','img_cert_01_hd.jpg','img_cert_02_hd.jpg','img_cert_03_hd.jpg','img_cert_04_hd.jpg','img_cert_05_hd.jpg','img_cert_06_hd.jpg','img_cert_07_hd.jpg']);
 // Optimized 720px WebP derivatives in assets/thumbs/ for anything shown small; originals stay for full-size views.
@@ -77,13 +77,13 @@ class Component extends DCLogic {
   certImgRef = el => { this._certImg = el; this.syncCertImg(); };
   syncCertImg() { const el = this._certImg; if (!el) return; const s = el.getAttribute('data-src'); if (s && !s.includes('{{') && el.getAttribute('src') !== s) el.setAttribute('src', s); }
   state = { menu: false, palette: false, display: false, notice: false, project: null, q: '', pi: 0, size: 'm', contrast: 'std', filter: 'all', form: blankForm(), errors: {}, status: 'idle', copied: false, w: typeof window !== 'undefined' ? window.innerWidth : 1200, active: '', liveMsg: '', pill: false, pillInset: 0, pillsIn: false, rects: null, ov: null, ovOpen: false, ovClosing: false, fan: 0, fanHover: false, cert: 0, certIdle: true, heroVisible: true, pov: 'design', vidPaused: false, vidFailed: false, posterFailed: false, userPaused: false, deck: 0, tab: 0, tabIn: true, xpOpen: 0, xpReached: 0, typed: '' };
-  tlRef = React.createRef(); tlFill = React.createRef(); heroRef = React.createRef(); pCanvas = React.createRef(); magRef = React.createRef(); meshHost = React.createRef(); meshCanvas = React.createRef(); pillARef = React.createRef(); pillBRef = React.createRef(); ovRef = React.createRef(); ovClose = React.createRef(); sentinelRef = React.createRef(); hdrInner = React.createRef(); videoRef = React.createRef(); progRef = React.createRef();
+  tlRef = React.createRef(); tlFill = React.createRef(); tlTrack = React.createRef(); tlHead = React.createRef(); heroRef = React.createRef(); pCanvas = React.createRef(); magRef = React.createRef(); meshHost = React.createRef(); meshCanvas = React.createRef(); pillARef = React.createRef(); pillBRef = React.createRef(); ovRef = React.createRef(); ovClose = React.createRef(); sentinelRef = React.createRef(); hdrInner = React.createRef(); videoRef = React.createRef(); progRef = React.createRef();
   waterHost = React.createRef(); waterCanvas = React.createRef();
   mainRef = React.createRef(); paletteInput = React.createRef(); menuClose = React.createRef(); noticeFirst = React.createRef(); sizeFirst = React.createRef(); projClose = React.createRef(); certClose = React.createRef(); certHost = React.createRef(); apInput = React.createRef(); apScroll = React.createRef();
 
   loadWallProjects() {
     // Hero wall mirrors the "View all projects" page: read its PROJECTS list so new entries appear here automatically.
-    fetch('js/projects.js?v=20261025a').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
+    fetch('js/projects.js?v=20261028c').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
       const a = t.indexOf('const TECH_'), b = t.indexOf('const PROJECTS = ['), e = t.indexOf('\n];', b);
       if (a < 0 || b < 0 || e < 0) return;
       const list = new Function(t.slice(a, e + 3) + '\nreturn PROJECTS;')();
@@ -172,7 +172,7 @@ class Component extends DCLogic {
     if (this.reduce) this.setState({ pillsIn: true }); else this.pillT = setTimeout(() => this.setState({ pillsIn: true }), 350);
     this.onPillKey = (e) => { if (e.key === 'Escape' && this.state.ovOpen) { e.stopPropagation(); this.closePill(); } };
     window.addEventListener('keydown', this.onPillKey, true);
-    this.certTick = () => { clearTimeout(this.certT); if (this.reduce) return; this.certT = setTimeout(() => { if (this.state.certIdle) this.setState(s => ({ cert: (s.cert + 1) % CERT_PANELS.length })); this.certTick(); }, 3800); };
+    this.certTick = () => { clearTimeout(this.certT); if (this.reduce) return; this.certT = setTimeout(() => { if (this.state.certIdle) this.setState(s => ({ cert: (s.cert + 1) % CERT_PANELS.length })); this.certTick(); }, 6500); };
     this.certTick();
     if (this.reduce || !(this.props.heroWebm || this.props.heroMp4)) { this.setState({ vidPaused: true }); if (this.progRef.current) this.progRef.current.style.transform = 'scaleX(1)'; }
     else setTimeout(() => this.setupVideo(), 0);
@@ -218,6 +218,7 @@ class Component extends DCLogic {
     });
   }
   fx() {
+    const geo = this.tlGeo();
     if (this.reduce) { if (this.tlFill.current) this.tlFill.current.style.transform = 'scaleY(1)'; this.setXp(1); return; }
     const y = window.scrollY;
     document.querySelectorAll('[data-depth]').forEach(el => {
@@ -226,14 +227,26 @@ class Component extends DCLogic {
     });
     const tl = this.tlRef.current;
     if (tl) {
-      const r = tl.getBoundingClientRect();
-      const p = Math.max(0, Math.min(1, (window.innerHeight * 0.65 - r.top) / r.height));
+      const r = tl.getBoundingClientRect(), g = geo || { a: 0, len: r.height };
+      const p = Math.max(0, Math.min(1, (window.innerHeight * 0.6 - r.top - g.a) / Math.max(1, g.len)));
       if (this.tlFill.current) this.tlFill.current.style.transform = 'scaleY(' + p + ')';
+      const hd = this.tlHead.current; if (hd) { hd.style.transform = 'translateY(' + (p * g.len) + 'px)'; hd.style.opacity = p > 0 && p < 1 ? '1' : '0'; }
       this.setXp(p);
     }
   }
+  tlGeo() {
+    const tl = this.tlRef.current; if (!tl) return null;
+    const dots = tl.querySelectorAll('[data-dot]'); if (dots.length < 2) return null;
+    const tr = tl.getBoundingClientRect(), c = d => { const r = d.getBoundingClientRect(); return r.top - tr.top + r.height / 2; };
+    const a = c(dots[0]), b = c(dots[dots.length - 1]), len = b - a;
+    this._dotPos = [...dots].map(d => c(d) - a); this._tlLen = len;
+    [this.tlTrack.current, this.tlFill.current].forEach(el => { if (el) { el.style.top = a + 'px'; el.style.bottom = 'auto'; el.style.height = len + 'px'; } });
+    if (this.tlHead.current) this.tlHead.current.style.top = (a - 5) + 'px';
+    return { a, len };
+  }
   setXp(p) {
-    const n = EXPERIENCE.length; const reached = p >= 1 ? n : Math.floor(p * n + 0.35);
+    const n = EXPERIENCE.length, pos = this._dotPos, len = this._tlLen;
+    const reached = p >= 1 ? n : p <= 0 ? 0 : pos ? pos.filter(d => p * len >= d - 0.5).length : Math.floor(p * (n - 1)) + 1;
     if (reached !== this.state.xpReached) this.setState({ xpReached: reached });
   }
   scheduleFan() {
@@ -515,28 +528,28 @@ class Component extends DCLogic {
     const mat = new THREE.ShaderMaterial({ uniforms: uni,
       vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }',
       fragmentShader: `precision highp float; varying vec2 vUv; uniform float uT; uniform float uAsp; uniform vec3 uR[8];
-        float H(vec2 p){ float h = 0.0; for (int i = 0; i < 8; i++) { float age = uT - uR[i].z; if (age < 0.0 || age > 4.5) continue;
-          vec2 d = p - uR[i].xy; d.x *= uAsp; float dist = length(d); float x = dist - age * 0.3;
-          h += sin(x * 52.0) * exp(-x * x * 140.0) * exp(-age * 0.8) / (1.0 + dist * 3.0); } return h; }
+        float H(vec2 p){ float h = 0.0; for (int i = 0; i < 8; i++) { float age = uT - uR[i].z; if (age < 0.0 || age > 3.0) continue;
+          vec2 d = p - uR[i].xy; d.x *= uAsp; float dist = length(d); float x = dist - age * 0.22;
+          h += 0.35 * sin(x * 34.0) * exp(-x * x * 90.0) * exp(-age * 1.4) / (1.0 + dist * 3.0); } return h; }
         vec3 bg(vec2 uv){ vec3 a = vec3(0.969, 0.965, 0.949), b = vec3(0.886, 0.906, 0.949); vec3 c = mix(a, b, smoothstep(0.0, 1.0, 1.0 - uv.y + uv.x * 0.25));
           c -= 0.018 * smoothstep(0.3, 0.7, 0.5 + 0.5 * sin((uv.x * uAsp + uv.y) * 46.0)); return mix(c, vec3(0.902, 0.922, 0.969), 0.35 * smoothstep(0.6, 0.0, length((uv - vec2(0.85, 0.85)) * vec2(uAsp, 1.0)))); }
         void main(){ float e = 0.002; float h = H(vUv); vec2 s = vec2(H(vUv + vec2(e, 0.0)) - h, H(vUv + vec2(0.0, e)) - h) / e;
-          vec3 col = bg(vUv + s * 0.004);
+          vec3 col = bg(vUv + s * 0.0015);
           vec3 n = normalize(vec3(-s * 0.03, 1.0)); float spec = pow(max(dot(n, normalize(vec3(-0.35, 0.45, 1.0))), 0.0), 48.0);
-          float flat0 = pow(normalize(vec3(-0.35, 0.45, 1.0)).z, 48.0); col += clamp(spec - flat0, -0.5, 1.0) * 0.8;
-          col = mix(col, vec3(0.255, 0.412, 0.882), clamp(h, 0.0, 1.0) * 0.4); col -= clamp(-h, 0.0, 1.0) * 0.13;
+          float flat0 = pow(normalize(vec3(-0.35, 0.45, 1.0)).z, 48.0); col += clamp(spec - flat0, -0.2, 0.4) * 0.22;
+          col = mix(col, vec3(0.255, 0.412, 0.882), clamp(h, 0.0, 1.0) * 0.12); col -= clamp(-h, 0.0, 1.0) * 0.04;
           gl_FragColor = vec4(col, 1.0); }` });
     const geo = new THREE.PlaneGeometry(2, 2); scene.add(new THREE.Mesh(geo, mat));
     const t0 = performance.now(), now = () => (performance.now() - t0) / 1000;
     const size = () => { const r = stage.getBoundingClientRect(); if (!r.width || !r.height) return; renderer.setSize(r.width, r.height, false); uni.uAsp.value = r.width / r.height; if (reduce || !running) draw(); };
     const draw = () => { uni.uT.value = now(); renderer.render(scene, cam); };
     let raf = 0, running = false, visible = false, slot = 0, lastT = 0, lx = -1, ly = -1;
-    const live = () => rip.some(r => now() - r.z < 4.5);
+    const live = () => rip.some(r => now() - r.z < 3.0);
     const loop = () => { draw(); raf = live() ? requestAnimationFrame(loop) : (running = false, 0); };
     const kick = () => { if (reduce || !visible || running) return; running = true; raf = requestAnimationFrame(loop); };
     const onMove = (e) => { const r = stage.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = 1 - (e.clientY - r.top) / r.height;
       if (x < 0 || x > 1 || y < 0 || y > 1) return; const t = performance.now();
-      if (t - lastT < 90 || Math.hypot(x - lx, y - ly) < 0.01) return; lastT = t; lx = x; ly = y;
+      if (t - lastT < 180 || Math.hypot(x - lx, y - ly) < 0.03) return; lastT = t; lx = x; ly = y;
       rip[slot].set(x, y, now()); slot = (slot + 1) % N; reduce ? draw() : kick(); };
     const ro = new ResizeObserver(size); ro.observe(stage);
     const io = new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (!visible) { cancelAnimationFrame(raf); running = false; } else kick(); }); io.observe(stage);
@@ -710,7 +723,7 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
       certDir: wide ? 'row' : 'column', certH: wide ? '26rem' : '36rem',
       certLeave: () => this.setState({ certIdle: true }),
       certPanels: CERT_PANELS.map((c, i) => { const on = i === s.cert; return { ...c, bg: "url('" + TH(c.bg.slice(5, -2), true) + "')", on, num: String(i + 1).padStart(2, '0'), grow: on ? 6 : 1, op: on ? 1 : 0, numOp: on ? 0 : 1, fill: certFills[i % certFills.length],
-          label: wide ? c.short : c.title, labelDir: wide ? 'column' : 'row', labelAlign: wide ? 'flex-start' : 'center', labelJustify: wide ? 'flex-end' : 'flex-start', labelText: 'left', labelGap: wide ? '0.375rem' : '0.75rem', labelPad: wide ? '0 1rem 1.25rem' : '0 1rem', numTrim: wide ? 'normal' : 'trim-both cap alphabetic', tf: on ? 'translateY(0)' : 'translateY(8px)', delay: on ? '150ms' : '0ms', pick: () => this.setState({ cert: i, certIdle: false }) }; }),
+          label: wide ? c.short : c.title, labelDir: wide ? 'column' : 'row', labelAlign: wide ? 'flex-start' : 'center', labelJustify: wide ? 'flex-end' : 'flex-start', labelText: 'left', labelGap: wide ? '0.375rem' : '0.75rem', labelPad: wide ? '0 1rem 1.25rem' : '0 1rem', numTrim: wide ? 'normal' : 'trim-both cap alphabetic', tf: on ? 'translateY(0)' : 'translateY(8px)', delay: on ? '350ms' : '0ms', pick: () => this.setState({ cert: i, certIdle: false }) }; }),
       ...(() => {
         const R = s.rects;
         const px = (v) => v + 'px';
@@ -788,7 +801,7 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
       activeTabId: 'tab-' + s.tab,
       onTabKey: (e) => { const k = e.key; if (k !== 'ArrowRight' && k !== 'ArrowLeft') return; e.preventDefault(); const i = (s.tab + (k === 'ArrowRight' ? 1 : -1) + STACK.length) % STACK.length; this.setTab(i); setTimeout(() => { const b = document.getElementById('tab-' + i); b && b.focus(); }, 0); },
       tabLine: STACK_LINES[s.tab], tabItems, tabOp: s.tabIn ? 1 : 0, tabTf: s.tabIn ? 'none' : 'translateY(14px)',
-      tlRef: this.tlRef, tlFill: this.tlFill,
+      tlRef: this.tlRef, tlFill: this.tlFill, tlTrack: this.tlTrack, tlHead: this.tlHead,
       wide, narrow: !wide, menu: s.menu, palette: s.palette, display: s.display, notice: s.notice, project: !!pj, pj: pj ? card(pj) : {},
       shortcut: isMac ? '\u2318K' : 'Ctrl K',
       contactCur: s.active === 'contact' ? 'true' : undefined, contactFg: s.active === 'contact' ? 'var(--accent-ink)' : 'var(--ink)', contactBg: s.active === 'contact' ? 'rgba(65,105,225,0.10)' : 'transparent',
@@ -797,7 +810,7 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
       filters: fdefs.map(([k, l]) => ({ label: l, on: s.filter === k, count: k === 'all' ? PROJECTS.length : PROJECTS.filter(p => p.cats.includes(k)).length, pick: () => this.setState({ filter: k }) })),
       workList: list.map(card),
       expertise: EXPERTISE.map((e, i) => ({ ...e, num: String(i + 1).padStart(2, '0') })),
-      experience: EXPERIENCE.map((x, i) => { const open = s.xpOpen === i; const on = i < s.xpReached; return { ...x, open, panelId: 'xp-' + i, rows: open ? '1fr' : '0fr', toggleLabel: open ? 'Less' : 'More', dotBorder: on ? 'var(--accent)' : 'var(--line-strong)', dotBg: on ? 'var(--accent)' : 'var(--bg)', dotScale: on ? 'scale(1)' : 'scale(0.75)', toggle: () => this.setState({ xpOpen: open ? -1 : i }) }; }), certs: CERTS, resources: RESOURCES,
+      experience: EXPERIENCE.map((x, i) => { const on = i < s.xpReached, hov = s.xpHover === i, latest = on && i === s.xpReached - 1; const open = (s.xpOpen ?? 0) === i; return { ...x, open, panelId: 'xp-' + i, rows: open ? '1fr' : '0fr', toggleLabel: open ? 'Hide details' : 'Show details', hasStats: !!(x.stats && x.stats.length), stats: (x.stats || []).map((st, k) => ({ ...st, row: k === 0 ? 'span 2' : 'auto', bg: 'transparent', ink: 'var(--ink)', sub: 'var(--ink-2)', border: 'var(--line)', size: k === 0 ? '2rem' : '1.375rem' })), panelOp: open ? 1 : 0, panelTf: open ? 'none' : 'translateY(-8px)', iconTf: open ? 'rotate(135deg)' : 'none', iconBg: open ? 'var(--ink)' : 'transparent', iconInk: open ? 'var(--on-ink)' : 'var(--ink)', iconBorder: open ? 'var(--ink)' : 'var(--line-strong)', toggle: () => this.setState({ xpOpen: open ? -1 : i }, () => { const t0 = performance.now(), f = () => { this.fx(); if (performance.now() - t0 < 500) requestAnimationFrame(f); }; requestAnimationFrame(f); }), dotBorder: on || hov ? 'var(--accent)' : 'var(--line-strong)', dotBg: on ? 'var(--accent)' : 'var(--bg)', dotScale: hov ? 'scale(1.12)' : on ? 'scale(1)' : 'scale(0.85)', iconDot: on ? '#FFFFFF' : 'var(--ink-2)', dotRing: hov ? '0 0 0 6px color-mix(in oklab,var(--accent) 22%,transparent)' : on ? '0 0 0 4px color-mix(in oklab,var(--accent) 14%,transparent)' : '0 0 0 0 transparent', pulse: latest && !this.reduce ? 'xpPulse 2.6s ease-out infinite' : 'none', cardBorder: hov || open ? 'var(--accent)' : 'var(--line)', cardShadow: hov ? '0 12px 28px rgba(20,36,58,0.1)' : 'none', cardTf: hov ? 'translateX(4px)' : 'none', enter: () => this.setState({ xpHover: i }), leave: () => this.setState(st => st.xpHover === i ? { xpHover: -1 } : null) }; }), certs: CERTS, resources: RESOURCES,
       form: s.form, errors: s.errors, hasErrors: errKeys.length > 0, errorCount: errKeys.length === 1 ? '1 field' : errKeys.length + ' fields',
       invalid: { name: !!s.errors.name, email: !!s.errors.email, message: !!s.errors.message },
       topics: TOPICS.map(([key, label]) => ({ key, label, on: s.form.topic === key, pick: () => this.setState(st => ({ form: { ...st.form, topic: key } })) })),
