@@ -64,7 +64,7 @@ class Component extends DCLogic {
     this.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     try { const d = JSON.parse(localStorage.getItem('jas-display') || '{}'); if (d.size && d.size !== 'm') document.documentElement.dataset.size = d.size; if (d.contrast === 'hc') document.documentElement.dataset.theme = 'hc'; } catch (e) {}
     this.measurePill = () => { const el = this.hdrInner.current; if (!el) return; const r = el.getBoundingClientRect(); const pad = parseFloat(getComputedStyle(el).paddingLeft) || 16; this.setState({ pillInset: Math.max(6, Math.round(r.left + pad + 26 - 18)) }); };
-    this.onResize = () => { this.setState({ w: window.innerWidth }); this.measurePill(); };
+    this.onResize = () => { const w = window.innerWidth; this.setState(w >= 980 && this.state.menu ? { w, menu: false } : { w }); this.measurePill(); };
     window.addEventListener('resize', this.onResize); this.measurePill();
     this.onKey = e => { if (e.key === 'Escape') this.closeAll(); }; window.addEventListener('keydown', this.onKey);
     const sen = this.sentinelRef.current;

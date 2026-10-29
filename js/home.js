@@ -128,7 +128,7 @@ class Component extends DCLogic {
     let size = 'm', contrast = 'std';
     try { const d = JSON.parse(localStorage.getItem('jas-display') || '{}'); size = d.size || size; contrast = d.contrast || contrast; } catch (e) {}
     this.setState({ size, contrast }, () => this.applyDisplay());
-    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onResize = () => { const w = window.innerWidth; if (w >= 980 && this.state.menu) { this.setState({ w, menu: false }); if (document.activeElement && document.activeElement.blur) document.activeElement.blur(); } else this.setState({ w }); };
     this.onKey = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); this.state.palette ? this.closeAll() : this.openPalette(); }
       else if (e.key === 'Escape') this.closeAll();
