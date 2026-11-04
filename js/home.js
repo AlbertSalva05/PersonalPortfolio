@@ -32,6 +32,9 @@ const EXPERIENCE = [
 const THUMBS = new Set(['img_project_01.jpg','img_project_02.jpg','img_project_03.jpg','img_project_04.jpg','img_project_05.jpg','img_project_06.png','img_project_07.png','img_project_08.png','img_project_09.png','img_project_10.jpg','img_project_11.png','img_project_12.png','img_project_13.png','todonify/desktop-dashboard.png','busybee/thumb.png','invoicify/thumb.png','invoicify-portal/thumb.png','moncrave/thumb.png','motivated/thumb.png','northlight/thumb.png','harborline/og-image.png','img_cert_01_hd.jpg','img_cert_02_hd.jpg','img_cert_03_hd.jpg','img_cert_04_hd.jpg','img_cert_05_hd.jpg','img_cert_06_hd.jpg','img_cert_07_hd.jpg']);
 // Optimized 720px WebP derivatives in assets/thumbs/ for anything shown small; originals stay for full-size views.
 const TH = (s, md) => { const k = String(s || '').replace(/^\.?\/?assets\//, ''); return THUMBS.has(k) ? 'assets/thumbs/' + k.replace('/', '-').replace('_hd', '').replace(/\.\w+$/, md ? '_md.webp' : '.webp') : s; };
+// Hero wall: 480px WebP copies in assets/wall/ plus known shapes, so cards never resize after load (CLS).
+const WALL_R = {"assets/img_project_01.jpg":2.169,"assets/img_project_02.jpg":2.149,"assets/img_project_03.jpg":2.175,"assets/img_project_04.jpg":2.175,"assets/img_project_05.jpg":2.162,"assets/img_project_06.png":1.905,"assets/img_project_07.png":1.905,"assets/img_project_08.png":1.905,"assets/img_project_09.png":1.905,"assets/hybridcam-og.png":1.905,"assets/harborline/og-image.png":1.905,"assets/invoicify/thumb.png":1.333,"assets/invoicify-portal/thumb.png":1.778,"assets/todonify/desktop-dashboard.png":1.5,"assets/busybee/thumb.png":1.6,"assets/givetogether/intro.png":2.297,"assets/cambridge/thumb.png":1.6,"assets/flashbike/thumb.png":1.6,"assets/moncrave/thumb.png":0.75,"assets/motivated/thumb.png":1.6,"assets/northlight/thumb.png":1.6};
+const WALL = s => { const k = String(s || '').replace(/^\.?\/?/, ''); return WALL_R[k] ? 'assets/wall/' + k.replace(/^assets\//, '').replace(/\//g, '-').replace(/\.\w+$/, '.webp') : TH(k); };
 const CERT_PANELS = [
   { title: 'UI Design Bootcamp', sub: 'Frost Design and Consulting Group, Inc.', date: 'September 18, 2026', short: 'UI', href: 'assets/doc_cert_01.pdf', bg: "url('assets/img_cert_01_hd.jpg')", alt: 'UI Design Bootcamp certificate from Frost Design and Consulting Group' },
   { title: 'HTML Essentials', sub: 'Cisco Networking Academy', date: 'May 6, 2026', short: 'HTML', href: 'assets/doc_cert_02.pdf', bg: "url('assets/img_cert_02_hd.jpg')", alt: 'HTML Essentials certificate, Cisco Networking Academy' },
@@ -83,7 +86,7 @@ class Component extends DCLogic {
 
   loadWallProjects() {
     // Hero wall mirrors the "View all projects" page: read its PROJECTS list so new entries appear here automatically.
-    fetch('js/projects.js?v=20261028c').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
+    fetch('js/projects.js?v=20261104a').then(r => r.ok ? r.text() : Promise.reject()).then(t => {
       const a = t.indexOf('const TECH_'), b = t.indexOf('const PROJECTS = ['), e = t.indexOf('\n];', b);
       if (a < 0 || b < 0 || e < 0) return;
       const list = new Function(t.slice(a, e + 3) + '\nreturn PROJECTS;')();
@@ -118,10 +121,11 @@ class Component extends DCLogic {
     document.documentElement.lang = 'en';
     this.setupParticles();
     this.loadWallProjects();
-    (window.requestIdleCallback || ((f) => setTimeout(f, 1200)))(() => this.setupWater(), { timeout: 2500 });
+    // three.js (WebGL water + mesh) waits for page load + idle so it never competes with first paint.
+    const afterLoad = (f) => { const go = () => (window.requestIdleCallback || ((g) => setTimeout(g, 1500)))(f, { timeout: 4000 }); document.readyState === 'complete' ? go() : window.addEventListener('load', go, { once: true }); };
+    afterLoad(() => { this._afterLoad = true; this.setupWater(); this.setupMesh(); });
     const tick = () => { try { this.setState({ ctTime: new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila' }).format(new Date()) }); } catch (e) {} };
     tick(); this.ctT = setInterval(tick, 30000);
-    this.setupMesh();
     this.setupBlur();
     this.setupCount();
     this.tmTick();
@@ -398,7 +402,7 @@ class Component extends DCLogic {
     const rb = root.getBoundingClientRect();
     tiles.forEach(el => { el.dataset.watch = '1'; const r = el.getBoundingClientRect(); if (r.top < rb.bottom && r.bottom > rb.top) requestAnimationFrame(() => show(el)); else this.apIO.observe(el); });
   }
-  componentDidUpdate() { this.syncCertImg(); if (!this._waterInit) this.setupWater();
+  componentDidUpdate() { this.syncCertImg(); if (!this._waterInit && this._afterLoad) this.setupWater();
     const open = !!(this.state && this.state.allProjects);
     if (open) { clearTimeout(this.apT); this.apT = setTimeout(() => this.observeTiles(), 30); }
     else if (this._apWasOpen) { this.apIO && this.apIO.disconnect(); this.apIO = null; }
@@ -407,7 +411,7 @@ class Component extends DCLogic {
   wallVals(s) {
     const vw = s.w || window.innerWidth, wide = vw >= 1024, xl = vw >= 1200, side = vw >= 640;
     const SRC = s.wallProjects || PROJECTS;
-    const proj = SRC.map((p, i) => ({ img: TH(p.img || ('assets/img_project_0' + (i + 1) + '.jpg')), alt: 'Screenshot of ' + p.title + ' for ' + p.client, badge: 'Project', badgeBg: '#E3E9FB', badgeInk: '#1F3C9C', quote: p.line, name: p.title, sub: p.client, initials: p.client.split(/[\s·]+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase(), avatarBg: '#2F52C4', ratio: '16/10' }));
+    const proj = SRC.map((p, i) => { const src = p.img || ('assets/img_project_0' + (i + 1) + '.jpg'); return { img: WALL(src), r0: WALL_R[String(src).replace(/^\.?\/?/, '')], alt: 'Screenshot of ' + p.title + ' for ' + p.client, badge: 'Project', badgeBg: '#E3E9FB', badgeInk: '#1F3C9C', quote: p.line, name: p.title, sub: p.client, initials: p.client.split(/[\s·]+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase(), avatarBg: '#2F52C4', ratio: '16/10' }; });
     const certs = CERT_PANELS.map(c => ({ img: TH(c.bg.replace("url('", '').replace("')", '')), alt: c.alt, badge: 'Certificate', badgeBg: '#FBE4E5', badgeInk: '#9E1419', quote: c.title + '.', name: c.sub, sub: 'Issued ' + c.date, initials: c.sub.split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(), avatarBg: '#B3191E', ratio: '4/3' }));
     // Three columns (one on narrow screens). Each project goes in exactly one column so no project shows twice side by side.
     const n = proj.length, maxCol = wide ? 3 : side ? 2 : 1, durs = [30, 36, 42];
@@ -415,13 +419,16 @@ class Component extends DCLogic {
     let nCol = maxCol; while (nCol > 1 && Math.floor(n / nCol) < 5) nCol--;
     // Card height is chosen so one pass of a column is taller than the wall plus a card: no project is ever visible twice.
     // Images crop from the top-left so the logo and site name stay in frame.
-    const fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const hero = this.heroRef && this.heroRef.current, wk = vw + '|' + s.size + '|' + !!hero;
+    // Read layout once per width/size, not every render (avoids forced reflow).
+    if (this._wk !== wk) { this._wk = wk; this._fs = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16; this._heroH = hero ? hero.offsetHeight : 0; }
+    const fs = this._fs;
     const wallPx = xl ? Math.min(vw * 0.46, 40 * fs) : wide ? Math.min(vw * 0.54, 44 * fs) : side ? Math.min(vw * 0.38, 22 * fs) : Math.min(vw * 0.38, 10 * fs);
     const padPx = Math.min(Math.max(fs, vw * 0.03), 2 * fs), colW = Math.max(40, (wallPx - 2 * padPx - 12 * (nCol - 1)) / nCol);
-    const hero = this.heroRef && this.heroRef.current, viewH = (hero && hero.offsetHeight) || Math.max(32 * fs, Math.min(window.innerHeight * 0.88, 54 * fs));
+    const viewH = this._heroH || Math.max(32 * fs, Math.min(window.innerHeight * 0.88, 54 * fs));
     // Each card keeps its screenshot's own shape (clamped) so logo and wordmark stay in frame; if a column is too short to loop cleanly, all its cards grow evenly and crop from the centre.
     const nat = this.wallNat || (this.wallNat = {});
-    proj.forEach(p => { if (nat[p.img] === undefined) { nat[p.img] = 0; const im = new Image(); im.onload = () => { nat[p.img] = im.naturalWidth / im.naturalHeight; clearTimeout(this.natT); this.natT = setTimeout(() => this.forceUpdate(), 60); }; im.src = p.img; } });
+    proj.forEach(p => { if (nat[p.img] === undefined && p.r0) nat[p.img] = p.r0; if (nat[p.img] === undefined) { nat[p.img] = 0; const im = new Image(); im.onload = () => { nat[p.img] = im.naturalWidth / im.naturalHeight; clearTimeout(this.natT); this.natT = setTimeout(() => this.forceUpdate(), 60); }; im.src = p.img; } });
     const cols = Array.from({ length: nCol }, (_, c) => { const cs = proj.filter((_, j) => j % nCol === c); const rs = cs.map(p => Math.min(2.4, Math.max(1.25, nat[p.img] || 1.6))); const hs = rs.map(x => colW / x); const tot = hs.reduce((a, h) => a + h + 12, 0), need = viewH * 1.08 + Math.max(...hs) + 12; const k = tot < need ? need / tot : 1;
       return cs.map((p, j) => { const rr = rs[j] / k; return { ...p, ratio: rr.toFixed(3), pos: 'left top' }; }); });
     return {
@@ -685,7 +692,7 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
     const n = PROJECTS.length;
     const cur = PROJECTS[s.deck];
     const poses = ['translate3d(0,0,0) rotate(0deg) scale(1)', 'translate3d(9%,-7%,0) rotate(3deg) scale(0.93)', 'translate3d(17%,-13%,0) rotate(6deg) scale(0.86)', 'translate3d(22%,-18%,0) rotate(8deg) scale(0.8)', 'translate3d(-14%,6%,0) rotate(-6deg) scale(0.9)'];
-    const deckCards = PROJECTS.map((p, i) => { const d = (i - s.deck + n) % n; return { ...card(p), bg: "url('assets/thumbs/deck_project_0" + (i + 1) + ".webp')", tf: poses[d], op: d === n - 1 ? 0 : (d === 0 ? 1 : 1 - d * 0.18), z: 10 - d, blur: d === 0 ? 'none' : 'saturate(0.6)', hidden: d !== 0, click: () => d === 0 ? this.open('project', this.projClose, { project: p.id }) : this.setDeck(i) }; }).reverse();
+    const deckCards = PROJECTS.map((p, i) => { const d = (i - s.deck + n) % n; return { ...card(p), bg: "url('assets/thumbs/deck_0" + (i + 1) + ".webp')", tf: poses[d], op: d === n - 1 ? 0 : (d === 0 ? 1 : 1 - d * 0.18), z: 10 - d, blur: d === 0 ? 'none' : 'saturate(0.6)', hidden: d !== 0, click: () => d === 0 ? this.open('project', this.projClose, { project: p.id }) : this.setDeck(i) }; }).reverse();
     const certStyle = this.props.certCollapsed || 'gradient';
     const certFills = certStyle === 'solid' ? ['#14243A', '#1D3352', '#14243A', '#1D3352'] : certStyle === 'brand' ? ['linear-gradient(160deg,#2F52C4,#14243A)', 'linear-gradient(160deg,#B3191E,#3A0F14)'] : ['linear-gradient(160deg,#1D3352 0%,#2F52C4 100%)', 'linear-gradient(160deg,#14243A 0%,#24407E 100%)', 'linear-gradient(160deg,#1A2C48 0%,#3A5FD6 100%)'];
     const STACK = EXPERTISE;
