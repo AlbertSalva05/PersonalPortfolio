@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="jas-build" content="20261101a">
+<meta name="jas-build" content="20261104c">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>JAS · Senior Lead Developer & UI/UX Designer</title>
 <meta name="description" content="Senior Lead Developer and UI/UX Designer with 8+ years building responsive web apps: 100+ projects, reusable components, PageSpeed 55 → 90 and manual QA.">
@@ -31,10 +31,15 @@
 <meta property="og:url" content="https://jas-portfolio-3z5b.onrender.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preconnect" href="https://unpkg.com" crossorigin="">
+<link rel="preconnect" href="https://cdn.simpleicons.org">
+<link rel="preload" as="image" type="image/webp" href="assets/wall/img_project_01.webp" fetchpriority="high">
 <link rel="manifest" href="site.webmanifest">
-<link rel="stylesheet" href="css/home.css?v=20261101a">
-<script src="js/runtime.js?v=20261101a"></script>
+<link rel="stylesheet" href="css/home.css?v=20261104c">
+<script defer src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
+<script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<script defer src="js/runtime.js?v=20261104c"></script>
 </head>
 <body>
 <x-dc>
@@ -100,7 +105,7 @@
           <div style="display:grid;gap:12px;will-change:transform;backface-visibility:hidden;animation:jas-wall {{ col.dur }} linear infinite;animation-direction:{{ col.dir }};animation-delay:{{ col.delay }};animation-play-state:{{ wallState }}">
             <sc-for list="{{ col.cards }}" as="k" hint-placeholder-count="4">
               <figure aria-hidden="{{ k.hid }}" data-dup="{{ k.hid }}" style="margin:0;border-radius:14px;overflow:hidden;background:#1B2A40;box-shadow:0 1px 0 rgba(255,255,255,0.08) inset,0 14px 36px rgba(0,0,0,0.38);outline:1px solid rgba(255,255,255,0.08);outline-offset:-1px">
-                <img decoding="async" src="{{ k.img }}" alt="{{ k.alt }}" loading="lazy" width="1600" height="1000" style="display:block;width:100%;height:auto;aspect-ratio:{{ k.ratio }};object-fit:cover;object-position:{{ k.pos }}">
+                <img decoding="async" src="{{ k.img }}" alt="{{ k.alt }}" loading="lazy" width="480" height="300" style="display:block;width:100%;height:auto;aspect-ratio:{{ k.ratio }};object-fit:cover;object-position:{{ k.pos }}">
               </figure>
             </sc-for>
           </div>
@@ -139,7 +144,7 @@
   <section id="work" aria-labelledby="work-title" style="scroll-margin-top:4.5rem;border-top:1px solid var(--line);overflow:hidden">
     <div style="max-width:72rem;margin:0 auto;padding:clamp(4rem,9vw,7.5rem) clamp(1rem,4vw,2.5rem);display:flex;flex-direction:column;gap:2.5rem">
       <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1rem">
-      <div style="display:flex;flex-direction:column;gap:0.5rem">
+      <div style="flex:1 1 20rem;min-width:0;display:flex;flex-direction:column;gap:0.5rem">
         <span style="font-weight:600;color:var(--ink-2)">01 <span aria-hidden="true" style="color:var(--accent)">/</span> Selected work</span>
         <h2 id="work-title" data-blur="" aria-label="Where ideas become interfaces." style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.05;letter-spacing:-0.01em;text-wrap:balance"><span data-w="" aria-hidden="true" style="display:inline-block">Where</span> <span data-w="" aria-hidden="true" style="display:inline-block">ideas</span> <span data-w="" aria-hidden="true" style="display:inline-block">become</span> <span data-w="" aria-hidden="true" style="display:inline-block;color:var(--accent-ink)">interfaces.</span></h2>
       </div>
@@ -236,7 +241,7 @@
   <section id="experience" aria-labelledby="xp-title" style="scroll-margin-top:4.5rem">
     <div style="max-width:72rem;margin:0 auto;padding:clamp(4rem,9vw,7.5rem) clamp(1rem,4vw,2.5rem);display:flex;flex-direction:column;gap:2.5rem">
       <div data-reveal="" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1rem">
-        <div style="display:flex;flex-direction:column;gap:0.5rem">
+        <div style="flex:1 1 20rem;min-width:0;display:flex;flex-direction:column;gap:0.5rem">
           <span style="font-weight:600;color:var(--ink-2)">03 <span aria-hidden="true" style="color:var(--accent)">/</span> Experience</span>
           <h2 id="xp-title" data-blur="" aria-label="Since 2017, in the browser." style="margin:0;font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(2rem,4.5vw,3.25rem);line-height:1.05;letter-spacing:-0.01em;text-wrap:balance"><span data-w="" aria-hidden="true" style="display:inline-block">Since</span> <span data-w="" aria-hidden="true" style="display:inline-block">2017,</span> <span data-w="" aria-hidden="true" style="display:inline-block">in</span> <span data-w="" aria-hidden="true" style="display:inline-block">the</span> <span data-w="" aria-hidden="true" style="display:inline-block;color:var(--accent-ink)">browser.</span></h2>
           <p style="margin:0.5rem 0 0;color:var(--ink-2);line-height:1.6;font-size:1.0625rem;max-width:min(100%,56ch);text-wrap:pretty">Nine years across three teams, from turning mockups <br class="desktop-break">into code to leading design and front-end work for <br class="desktop-break">enterprise clients.</p>
@@ -364,19 +369,19 @@
         </div>
         <p style="margin:0;font-size:1.125rem;line-height:1.6;color:var(--ink-2);max-width:min(100%,56ch);text-wrap:pretty">Most at home where a Figma file turns into working <br class="desktop-break">code: keyboard paths, heading order, and a layout <br class="desktop-break">that holds at 320&nbsp;px.</p>
         </div>
-        <figure style="margin:0;display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:clamp(1rem,2.5vw,1.5rem);border:1px solid var(--line);border-radius:14px;background:var(--bg)">
+        <div role="group" aria-label="Designer and developer portrait" style="margin:0;display:flex;flex-direction:column;align-items:center;gap:0.75rem;padding:clamp(1rem,2.5vw,1.5rem);border:1px solid var(--line);border-radius:14px;background:var(--bg)">
           <div style="position:relative;width:clamp(6.5rem,12vw,8.5rem);aspect-ratio:1/1;perspective:900px;transition:transform 450ms cubic-bezier(.3,.8,.4,1);transform:{{ coinLift }}">
             <div style="position:absolute;inset:0;transform-style:preserve-3d;transition:transform 900ms cubic-bezier(.2,.75,.25,1);transform:{{ coinSpin }};border-radius:50%;box-shadow:0 10px 24px rgba(20,36,58,0.16)">
-              <img decoding="async" width="400" height="400" src="assets/img_hero_design_01.webp" alt="James Albert Salva, designer side" width="152" height="152" aria-hidden="{{ povDesignHidden }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden">
-            <img decoding="async" width="400" height="400" src="assets/img_hero_dev_01.webp" alt="James Albert Salva, developer side" width="152" height="152" aria-hidden="{{ povDevHidden }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg)">
+              <img decoding="async" src="assets/img_hero_design_01.webp" alt="James Albert Salva, designer side" width="152" height="152" aria-hidden="{{ povDesignHidden }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden">
+            <img decoding="async" src="assets/img_hero_dev_01.webp" alt="James Albert Salva, developer side" width="152" height="152" aria-hidden="{{ povDevHidden }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg)">
           </div>
           </div>
-          <figcaption aria-live="polite" style="font-size:0.9375rem;color:var(--ink-2);text-align:center;white-space:nowrap">{{ povCaption }}</figcaption>
+          <p aria-live="polite" style="margin:0;font-size:0.9375rem;color:var(--ink-2);text-align:center;white-space:nowrap">{{ povCaption }}</p>
           <div role="group" aria-label="Point of view" style="display:flex;width:min(100%,16rem);padding:3px;border-radius:999px;background:var(--surface);border:1px solid var(--line-strong)">
             <button type="button" onClick="{{ povDesign }}" aria-pressed="{{ isDesignPov }}" style="flex:1 1 0;white-space:nowrap;min-height:44px;padding:0 1.125rem;border-radius:999px;border:0;cursor:pointer;font-weight:600;font-size:0.9375rem;display:flex;justify-content:center;align-items:center;gap:0.5rem;transition:background 300ms,color 300ms;background:{{ abDesignBg }};color:{{ abDesignInk }}"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:#4169E1;flex:none"></span>Designer</button>
             <button type="button" onClick="{{ povDev }}" aria-pressed="{{ isDevPov }}" style="flex:1 1 0;white-space:nowrap;min-height:44px;padding:0 1.125rem;border-radius:999px;border:0;cursor:pointer;font-weight:600;font-size:0.9375rem;display:flex;justify-content:center;align-items:center;gap:0.5rem;transition:background 300ms,color 300ms;background:{{ abDevBg }};color:{{ abDevInk }}"><span aria-hidden="true" style="width:8px;height:8px;border-radius:2px;background:#E0262B;flex:none"></span>Developer</button>
           </div>
-        </figure>
+        </div>
       </div>
       <sc-if value="{{ abBento }}" hint-placeholder-val="{{ true }}">
       <dl data-reveal="" style="margin:0;display:grid;grid-template-columns:{{ abBentoCols }};gap:12px;align-items:stretch">
@@ -440,7 +445,7 @@
       </div>
       <div role="tablist" aria-label="Certifications" onMouseLeave="{{ certLeave }}" style="display:flex;flex-direction:{{ certDir }};gap:6px;height:{{ certH }}">
         <sc-for list="{{ certPanels }}" as="c" hint-placeholder-count="5">
-          <button type="button" role="tab" aria-selected="{{ c.on }}" aria-expanded="{{ c.on }}" aria-label="{{ c.alt }}" onPointerEnter="{{ c.pick }}" onFocus="{{ c.pick }}" onClick="{{ c.pick }}" style="position:relative;flex:{{ c.grow }} 1 0;min-width:0;min-height:0;overflow:hidden;border:1px solid var(--line-strong);border-radius:10px;padding:0;cursor:pointer;text-align:left;color:#FFFFFF;background:#14243A;transition:flex-grow 1300ms linear(0, 0.094 5.6%, 0.274 11.1%, 0.455 16.7%, 0.608 22.2%, 0.726 27.8%, 0.812 33.3%, 0.873 38.9%, 0.944 50%, 0.976 61.1%, 1 100%)">
+          <button type="button" role="tab" aria-selected="{{ c.on }}" aria-controls="cert-panel" aria-label="{{ c.alt }}" onPointerEnter="{{ c.pick }}" onFocus="{{ c.pick }}" onClick="{{ c.pick }}" style="position:relative;flex:{{ c.grow }} 1 0;min-width:0;min-height:0;overflow:hidden;border:1px solid var(--line-strong);border-radius:10px;padding:0;cursor:pointer;text-align:left;color:#FFFFFF;background:#14243A;transition:flex-grow 1300ms linear(0, 0.094 5.6%, 0.274 11.1%, 0.455 16.7%, 0.608 22.2%, 0.726 27.8%, 0.812 33.3%, 0.873 38.9%, 0.944 50%, 0.976 61.1%, 1 100%)">
             <span aria-hidden="true" style="position:absolute;inset:0;min-width:22rem;background-color:#FFFFFF;background-image:{{ c.bg }};background-size:cover;background-position:center;transition:opacity 900ms ease;opacity:{{ c.op }}"></span>
             <span aria-hidden="true" style="position:absolute;inset:0;background:{{ c.fill }};transition:opacity 900ms;opacity:{{ c.numOp }}"></span>
             <span aria-hidden="true" style="position:absolute;inset:0;display:flex;align-items:flex-start;padding:0.875rem"><span style="font-size:0.75rem;font-weight:600;color:#FFFFFF;background:rgba(10,16,28,0.82);border-radius:4px;padding:0.1875rem 0.5rem;white-space:nowrap;transition:opacity 600ms 300ms;opacity:{{ c.op }}">Issued {{ c.date }}</span></span>
@@ -453,7 +458,7 @@
           </button>
         </sc-for>
       </div>
-      <div aria-live="polite" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-top:1px solid var(--line)">
+      <div id="cert-panel" role="tabpanel" aria-label="Selected certificate" aria-live="polite" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-top:1px solid var(--line)">
         <span style="display:flex;flex-direction:column"><strong style="font-weight:600">{{ certActive.title }}</strong><span style="font-size:0.9375rem;color:var(--ink-2)">{{ certActive.sub }} · {{ certActive.date }}</span></span>
         <button type="button" onClick="{{ openCert }}" aria-haspopup="dialog" style="white-space:nowrap;min-height:44px;padding:0 1.125rem;display:flex;align-items:center;gap:0.5rem;border:1px solid var(--ink);border-radius:6px;color:var(--ink);text-decoration:none;font-weight:600;background:transparent;cursor:pointer;font-size:inherit" style-hover="background:var(--ink);color:var(--on-ink)">View certificate</button>
       </div>
@@ -767,7 +772,7 @@
   <span aria-hidden="true" style="position:absolute;right:calc(100% + 10px);top:50%;display:flex;align-items:center;gap:0.5rem;white-space:nowrap;padding:0.5rem 0.875rem;border-radius:999px;background:var(--ink);color:var(--on-ink);font-size:0.875rem;font-weight:600;line-height:1;box-shadow:0 8px 20px rgba(20,36,58,0.2);pointer-events:none;transition:opacity 250ms ease,transform 350ms cubic-bezier(.2,.7,.2,1);opacity:{{ ttLabelOp }};transform:{{ ttLabelTf }}">{{ ttLabel }}<span ref="{{ ttPct }}" style="font-weight:500;opacity:0.75;font-variant-numeric:tabular-nums">0%</span></span>
 </button>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;availability&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;open&quot;,&quot;roles&quot;,&quot;booking&quot;,&quot;closed&quot;],&quot;default&quot;:&quot;open&quot;,&quot;tsType&quot;:&quot;'open'|'roles'|'booking'|'closed'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;certCollapsed&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;gradient&quot;,&quot;solid&quot;,&quot;brand&quot;],&quot;default&quot;:&quot;gradient&quot;,&quot;tsType&quot;:&quot;'gradient'|'solid'|'brand'&quot;,&quot;section&quot;:&quot;Certifications&quot;},&quot;testimonialLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;peek&quot;,&quot;coverflow&quot;],&quot;default&quot;:&quot;peek&quot;,&quot;tsType&quot;:&quot;'peek'|'coverflow'&quot;,&quot;section&quot;:&quot;Testimonials&quot;},&quot;aboutStats&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bento&quot;,&quot;strip&quot;,&quot;ledger&quot;],&quot;default&quot;:&quot;bento&quot;,&quot;tsType&quot;:&quot;'bento'|'strip'|'ledger'&quot;,&quot;section&quot;:&quot;About&quot;}}" src="js/home.js?v=20261101a"></script>
+<script type="text/x-dc" data-dc-script data-props="{&quot;availability&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;open&quot;,&quot;roles&quot;,&quot;booking&quot;,&quot;closed&quot;],&quot;default&quot;:&quot;open&quot;,&quot;tsType&quot;:&quot;'open'|'roles'|'booking'|'closed'&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;certCollapsed&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;gradient&quot;,&quot;solid&quot;,&quot;brand&quot;],&quot;default&quot;:&quot;gradient&quot;,&quot;tsType&quot;:&quot;'gradient'|'solid'|'brand'&quot;,&quot;section&quot;:&quot;Certifications&quot;},&quot;testimonialLayout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;peek&quot;,&quot;coverflow&quot;],&quot;default&quot;:&quot;peek&quot;,&quot;tsType&quot;:&quot;'peek'|'coverflow'&quot;,&quot;section&quot;:&quot;Testimonials&quot;},&quot;aboutStats&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bento&quot;,&quot;strip&quot;,&quot;ledger&quot;],&quot;default&quot;:&quot;bento&quot;,&quot;tsType&quot;:&quot;'bento'|'strip'|'ledger'&quot;,&quot;section&quot;:&quot;About&quot;}}" src="js/home.js?v=20261104c"></script>
 <noscript><p style="padding:2rem;font-family:system-ui,sans-serif">This site needs JavaScript enabled.</p></noscript>
 </body>
 </html>
