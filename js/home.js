@@ -269,21 +269,24 @@ class Component extends DCLogic {
     this.measure();
     this.pillOpener = k;
     clearTimeout(this.ovT);
-    this.toss(k === 'a' ? 'design' : 'dev'); this.setState({ ov: k, ovOpen: false, ovClosing: false, ovClip: this.rectClip(k) }, () => {
+    this.toss(k === 'a' ? 'design' : 'dev');
+    const full = 'inset(0px 0px 0px 0px round 0px)', focus = () => setTimeout(() => this.ovClose.current && this.ovClose.current.focus({ preventScroll: true }), 60);
+    if (this.state.ov === k && this.state.ovClosing) { this.setState({ ovOpen: true, ovClosing: false, ovAnim: true, ovClip: full }, focus); return; }
+    cancelAnimationFrame(this.ovRaf);
+    this.setState({ ov: k, ovOpen: false, ovClosing: false, ovAnim: false, ovClip: this.rectClip(k) }, () => {
       if (this.ovRef.current) this.ovRef.current.getBoundingClientRect();
-      this.ovT = setTimeout(() => {
-        this.setState({ ovOpen: true, ovClip: 'inset(0px 0px 0px 0px round 0px)' }, () => setTimeout(() => this.ovClose.current && this.ovClose.current.focus({ preventScroll: true }), 60));
-      }, 20);
+      this.ovRaf = requestAnimationFrame(() => { this.ovRaf = requestAnimationFrame(() => this.setState({ ovAnim: true, ovOpen: true, ovClip: full }, focus)); });
     });
   }
   closePill = () => {
     if (!this.state.ov) return;
     const k = this.state.ov;
     if (this.reduce) { this.setState({ ov: null, ovOpen: false }); this.focusPill(k); return; }
-    this.setState({ ovOpen: false, ovClosing: true, ovClip: this.rectClip(k) });
+    cancelAnimationFrame(this.ovRaf);
+    this.setState({ ovOpen: false, ovClosing: true, ovAnim: true, ovClip: this.rectClip(k) });
     clearTimeout(this.ovT); this.ovT = setTimeout(() => this.finishClose(), 750);
   };
-  finishClose() { if (!this.state.ovClosing) return; const k = this.state.ov; this.setState({ ov: null, ovClosing: false }); this.focusPill(k); }
+  finishClose() { if (!this.state.ovClosing) return; const k = this.state.ov; this.setState({ ov: null, ovClosing: false, ovAnim: false }); this.focusPill(k); }
   downloadResume() {
     const url = new URL('assets/James-Albert-Salva-Resume-2026.pdf', document.baseURI).href;
     try {
@@ -749,7 +752,7 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
         return {
           pillA: mk('a', this.pillARef, 'assets/img_hero_design_01.webp'), pillB: mk('b', this.pillBRef, 'assets/img_hero_dev_01.webp'),
           ovRef: this.ovRef, ovClose: this.ovClose, closePill: this.closePill,
-          ovHidden: !s.ov, ovVis: s.ov ? 'visible' : 'hidden', ovClip: s.ov ? (s.ovClip || this.rectClip(s.ov)) : 'inset(50% round 0px)',
+          ovHidden: !s.ov, ovVis: s.ov ? 'visible' : 'hidden', ovClip: s.ovClip || 'inset(50% round 0px)', ovTrClip: s.ovAnim ? 'clip-path 600ms linear(0, 0.18 7%, 0.55 16%, 0.92 26%, 1.06 34%, 1.08 40%, 1.05 50%, 1.01 62%, 0.996 76%, 1 100%)' : 'none', ovTrTf: s.ovAnim ? 'transform 600ms linear(0, 0.18 7%, 0.55 16%, 0.92 26%, 1.06 34%, 1.08 40%, 1.05 50%, 1.01 62%, 0.996 76%, 1 100%)' : 'none',
           ovAOp: isA ? 1 : 0, ovBOp: isA ? 0 : 1,
           ovAlt: isA ? 'Design view: a Figma-style frame with layout grid, spacing redlines, the JAS wordmark, type scale, shapes, icons and colour tokens' : 'Code view: James Albert Salva described as a JavaScript object with role, years, stack and availability',
           ovKicker: isA ? 'Design, the UI/UX side' : 'Engineering, the code side',
