@@ -1,16 +1,44 @@
 {
   "name": "James Albert Salva (JAS) · Portfolio",
   "short_name": "JAS",
+  "description": "Senior Lead Developer and UI/UX Designer with 8+ years building responsive web apps. 100+ projects delivered, reusable components, PageSpeed 55 → 90, and manual QA.",
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#F7F6F2",
   "theme_color": "#14243A",
+  "categories": [
+    "business",
+    "portfolio",
+    "productivity"
+  ],
   "icons": [
     {
-      "src": "assets/img_hero_design_01.webp",
-      "type": "image/webp",
-      "sizes": "512x512"
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/logo_mark_01.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
-  ],
-  "description": "Senior Lead Developer and UI/UX Designer with 8+ years building responsive web apps. 100+ projects delivered, reusable components, PageSpeed 55 → 90, and manual QA. Résumé available to download."
+  ]
 }

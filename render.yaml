@@ -48,6 +48,9 @@ services:
       - path: /assets/*
         name: Cache-Control
         value: no-cache
+      - path: /favicon.ico
+        name: Cache-Control
+        value: no-cache
       - path: /site.webmanifest
         name: Cache-Control
         value: no-cache
