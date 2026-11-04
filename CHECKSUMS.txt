@@ -1,4 +1,4 @@
-# SHA-256  size  path, 231 files, 35.2 MB
+# SHA-256  size  path, 231 files, 28.2 MB
 4a26b7df95531c5be3bc26f682c8dce827ed4329dec8def32b372e2976bce6d5  715  404.html
 54a71d05ba0103257b32be77da8cc3f1e52a3f022b3bf2ef734830598771149f  148388  assets/busybee/design-system.webp
 899de16afec4797f8d926ad0ae779fe850543af1646b41ecddcf89734930b128  98858  assets/busybee/login.png
@@ -67,12 +67,12 @@ acd3b15ffe7cb31044726019c935c627d7619b0130cd7b57cac8052b8975ca68  86456  assets/
 7a20f458ff5dc8905597cc2c658dfa103453f0b5980a87eee8e91b4d555ad040  24226  assets/invoicify-portal/forgot-v2-desktop.webp
 8d7e4fb3f495fc22d4d54ac3c54b48cfd8ba2bd93fb6c1ce2d527ed28a2f397d  41794  assets/invoicify-portal/forgot-v2-mobile.webp
 a8fa16de431fba0448645a28e306327f60b16cc0fcd5b33238767002dfc6e2b3  25324  assets/invoicify-portal/forgot-v2-tablet.webp
-b08938986ef136e59c3126c8991a08d3a06418aa5615c310a95e0bda50afe745  2069669  assets/invoicify-portal/login-v1-desktop.png
-10efee67945963f217f721bc1b3dc1f1dccfc3caad2338ec68a0509331787175  701174  assets/invoicify-portal/login-v1-mobile.png
-9f2e2b073f2aea16c6edf6ed035a28d4b57858236cfcba5726774abe5f4de540  1749199  assets/invoicify-portal/login-v1-tablet.png
-a504b92abb598767e378e5c2407431526afdba910d5f49397568b26c39d88096  2089581  assets/invoicify-portal/login-v2-desktop.png
-613fe3cf2590f9594f26c8cfe39c310dc1a5210bc2d5fa8763dae24d32da4c9f  449639  assets/invoicify-portal/login-v2-mobile.png
-9b3db977b67ce157ec3baac3662489aee2816b004c384eedcd7672d573f3e1dc  995348  assets/invoicify-portal/login-v2-tablet.png
+afe1feaa6ac64b11635a336a292a08f62ad99fe59dfdfe1f38918020de27ba44  137324  assets/invoicify-portal/login-v1-desktop.webp
+a25b6dd17d83f1ca0dfde6094dce042aedefc7f2cc5cf06d6018cdbad410d508  89282  assets/invoicify-portal/login-v1-mobile.webp
+6692fe2b6317d054df04a59a5cb2484eceaffb17ab9976220f6c54d95aca980b  128952  assets/invoicify-portal/login-v1-tablet.webp
+3437d9de38c7dd9e029d1d1c9a50b49c607917bb6d52fea5784badd2a20dba23  162820  assets/invoicify-portal/login-v2-desktop.webp
+f867208de4cade892eef4af2029773e0bdeeb132a96aef33275a17907651a9ce  67014  assets/invoicify-portal/login-v2-mobile.webp
+5deca9dd0d87b126609b963652d00bf2dc90ee3bc9541cfa572f235b0132ad12  190104  assets/invoicify-portal/login-v2-tablet.webp
 01f99c200c61e73030430d4fd6c9e3a493d713019d8b7363410adf5aeb69286c  62466  assets/invoicify-portal/register-v1-desktop.webp
 e6ec949e02a7da4beeebfedd9c0d02d97bcd23bae932e58e696cf8804f3d08e5  120538  assets/invoicify-portal/register-v1-mobile.webp
 72542798591286c8589a09259c92422dc4ea9fe1a6f26060044bb86341f42689  120208  assets/invoicify-portal/register-v1-tablet.webp
@@ -219,13 +219,13 @@ b8d35ecfa0ddc030268c27303a439a81a063b14076608c04de3b91450bb82614  5592  assets/w
 fc5727343f3d9fd46fc68765bf795824395131920c5c7251133cb7eb1e2cbe5f  2728  css/home.css
 17211e636fc1e79a515a013ce80609135d1f0a08260cf3c409c3049de9b91e74  700  css/privacy.css
 6b405d351fae40cb9eac2e12561f4950064f7cd4394da5a1eda3d4d423991c7d  1976  css/projects.css
-2854f287e1d63b50b19299d9b030eb393c752da37f31a68c77e64acb4df13f2b  153025  index.html
-c446bfc052504fd57ef505c86881a4cae91877bf1e9a26af4589226995829665  96347  js/home.js
+be8291bd8e6814f0b5c8b106969054812c9e99552536e9667452e89d2075d2f9  153025  index.html
+1de05fdfb95b9c2093672114870a2aa3678692074d01d238dd83028f8b7c216d  96583  js/home.js
 48ae6d54f49a364c1c89d2af60ed3db69de41e692932f238222d6c7322212274  35  js/privacy.js
-a7b9ac25ce38dac9862d1dd5201d8a051257971479f3b6321464fed036b6ebde  33298  js/projects.js
+ee396b5019fdc77d978cb8575c0c37b5d7ff192659fd27636b82fe1dbcf24045  33534  js/projects.js
 3789c1e21aa5eaf6452a7ee3dee93b3a146f3df7f82b6836ba1a3abd89e8bcd3  69562  js/runtime.js
 61bac31de1c08486bcafb24dcfb010d47e3dd8fa44487ade3aede5b0d330d993  9591  privacy.html
-e528b0242624e77325eda25675bb1e51ceae3b8bf6dc5a52f0f57d3e7ca4301a  21951  projects.html
+5b182c7043e1a5db30880815760858ce95ecbbae13a3a4df70849e3ea53a92e2  21951  projects.html
 642f8f7ef438edc4792176de1b1426d272649e85e9b9c6008b1a9223be9940a0  2243  render.yaml
 e3264f2a5e5b70548aa86f8b7d147430c8660a1acdfc468e9c67a29c9132d264  85  robots.txt
 947cc5fdfe8ceb0c2d3d5d563b19605c3f3246bf4d37f98760934a5e2d710414  533  site.webmanifest

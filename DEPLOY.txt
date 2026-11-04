@@ -1,11 +1,18 @@
-React build 20261105b, full delivery (231 files, 35.2 MB)
+React build 20261105c, full delivery (231 files, 28.2 MB)
 
-Project screenshots are now WebP (was 147 MB). Checked in the browser: every image on the home page and all 10 project galleries loads.
+Checks run before packaging (all passed):
+- 208 images decoded, 8 PDFs complete, 0 corrupted
+- JS syntax OK, 0 console errors
+- Home: 5 project pop-ups opened, 41 files load, 7 in-page links OK
+- Projects: 10 galleries, every tab, 135 files load
+- Privacy + 404 render, internal links OK
+- 30 external links and CDNs reachable
 
+Deploy:
 1. Unzip. Confirm assets/ is present.
-2. In your repo, DELETE the old files first (especially assets/), then copy everything from this folder in. Mixing old and new files breaks images.
-3. Keep .gitattributes (hidden file). It stops Git from changing line endings in images.
-4. Push with Git or GitHub Desktop. Avoid GitHub's web drag-and-drop: it caps at 100 files and can drop files without warning.
+2. In your repo, DELETE the old files first (especially assets/), then copy everything from this folder in.
+3. Keep .gitattributes (hidden file). It stops Git from damaging images.
+4. Push with Git or GitHub Desktop. Avoid GitHub's web drag-and-drop (100-file limit, can drop files without warning).
 5. Render, jas-portfolio: Manual Deploy, then "Clear build cache & deploy".
 6. Hard refresh (Ctrl+Shift+R), then open /projects and a gallery.
 7. If an image looks broken, compare its SHA-256 with CHECKSUMS.txt.
