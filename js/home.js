@@ -166,11 +166,15 @@ class Component extends DCLogic {
     this.measurePill(); window.addEventListener('resize', this.measurePill);
     const hero = this.heroRef.current;
     if (hero && 'IntersectionObserver' in window) { this.fio = new IntersectionObserver(([en]) => { this.setState({ heroVisible: en.isIntersecting }, () => this.scheduleFan()); }, { threshold: 0.2 }); this.fio.observe(hero); }
-    this.measure = () => {
-      const hero = this.heroRef.current; if (!hero) return;
+    this.readRects = () => {
+      const hero = this.heroRef.current; if (!hero) return null;
       const hr = hero.getBoundingClientRect();
       const r = (ref) => { const el = ref.current; if (!el) return null; const b = el.getBoundingClientRect(); return { x: b.left - hr.left, y: b.top - hr.top, w: b.width, h: b.height }; };
-      this.setState({ rects: { W: hr.width, H: hr.height, a: r(this.pillARef), b: r(this.pillBRef) } });
+      return { W: hr.width, H: hr.height, a: r(this.pillARef), b: r(this.pillBRef) };
+    };
+    this.measure = () => {
+      if (this.ovBusy) { this.measurePending = true; return; }
+      const R = this.readRects(); if (R) this.setState({ rects: R });
     };
     if ('ResizeObserver' in window && this.heroRef.current) { this.ro = new ResizeObserver(() => this.measure()); this.ro.observe(this.heroRef.current); }
     (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => this.measure());
@@ -199,6 +203,7 @@ class Component extends DCLogic {
     if (this.reduce) { this.setState({ typed: PHRASES[0] }); return; }
     let p = 0, i = 0, del = false;
     const tick = () => {
+      if (this.ovBusy) { this.typeT = setTimeout(tick, 250); return; }
       const word = PHRASES[p];
       i += del ? -1 : 1;
       this.setState({ typed: word.slice(0, i) });
@@ -260,20 +265,20 @@ class Component extends DCLogic {
     if (this.reduce || this.state.fanHover || !this.state.heroVisible) return;
     this.fanT = setTimeout(() => { this.setState(s => ({ fan: (s.fan + 1) % 3 }), () => this.scheduleFan()); }, 2600);
   }
-  rectClip(k) {
-    const R = this.state.rects; const p = R && R[k];
+  rectClip(k, R0) {
+    const R = R0 || this.state.rects; const p = R && R[k];
     if (!p) return 'inset(50% 50% 50% 50% round 999px)';
     return 'inset(' + p.y + 'px ' + (R.W - p.x - p.w) + 'px ' + (R.H - p.y - p.h) + 'px ' + p.x + 'px round ' + (p.h / 2) + 'px)';
   }
   openPill(k) {
-    this.measure();
-    this.pillOpener = k;
+    const R = (!this.ovBusy && this.readRects()) || this.state.rects;
+    this.pillOpener = k; this.ovBusy = true;
     clearTimeout(this.ovT);
     this.toss(k === 'a' ? 'design' : 'dev');
     const full = 'inset(0px 0px 0px 0px round 0px)', focus = () => setTimeout(() => this.ovClose.current && this.ovClose.current.focus({ preventScroll: true }), 60);
-    if (this.state.ov === k && this.state.ovClosing) { this.setState({ ovOpen: true, ovClosing: false, ovAnim: true, ovClip: full }, focus); return; }
+    if (this.state.ov === k && this.state.ovClosing) { clearTimeout(this.ovT); this.setState({ ovOpen: true, ovClosing: false, ovAnim: true, ovClip: full }, focus); return; }
     cancelAnimationFrame(this.ovRaf);
-    this.setState({ ov: k, ovOpen: false, ovClosing: false, ovAnim: false, ovClip: this.rectClip(k) }, () => {
+    this.setState({ rects: R, ov: k, ovOpen: false, ovClosing: false, ovAnim: false, ovClip: this.rectClip(k, R) }, () => {
       if (this.ovRef.current) this.ovRef.current.getBoundingClientRect();
       this.ovRaf = requestAnimationFrame(() => { this.ovRaf = requestAnimationFrame(() => this.setState({ ovAnim: true, ovOpen: true, ovClip: full }, focus)); });
     });
@@ -281,12 +286,13 @@ class Component extends DCLogic {
   closePill = () => {
     if (!this.state.ov) return;
     const k = this.state.ov;
-    if (this.reduce) { this.setState({ ov: null, ovOpen: false }); this.focusPill(k); return; }
+    if (this.reduce) { this.ovBusy = false; this.setState({ ov: null, ovOpen: false }); this.focusPill(k); return; }
     cancelAnimationFrame(this.ovRaf);
-    this.setState({ ovOpen: false, ovClosing: true, ovAnim: true, ovClip: this.rectClip(k) });
-    clearTimeout(this.ovT); this.ovT = setTimeout(() => this.finishClose(), 750);
+    this.ovCloseAt = performance.now();
+    this.setState({ ovOpen: false, ovClosing: true, ovAnim: true, ovClip: this.rectClip(k, this.state.rects) });
+    clearTimeout(this.ovT); this.ovT = setTimeout(() => this.finishClose(), 560);
   };
-  finishClose() { if (!this.state.ovClosing) return; const k = this.state.ov; this.setState({ ov: null, ovClosing: false, ovAnim: false }); this.focusPill(k); }
+  finishClose() { if (!this.state.ovClosing) return; const k = this.state.ov; this.ovBusy = false; this.setState({ ov: null, ovClosing: false, ovAnim: false }, () => { if (this.measurePending) { this.measurePending = false; this.measure(); } }); this.focusPill(k); }
   downloadResume() {
     const url = new URL('assets/James-Albert-Salva-Resume-2026.pdf', document.baseURI).href;
     try {
@@ -514,6 +520,7 @@ class Component extends DCLogic {
     const size = () => { dpr = Math.min(window.devicePixelRatio || 1, 2); W = cv.width = Math.round(host.clientWidth * dpr); H = cv.height = Math.round(host.clientHeight * dpr); draw(performance.now()); };
     const loop = (t) => {
       raf = 0; if (!visible || document.hidden) { last = 0; return; }
+      if (this.ovBusy) { last = 0; raf = requestAnimationFrame(loop); return; }
       const dt = last ? Math.min((t - last) / 1000, 0.05) : 0; last = t;
       for (const p of ps) { p.y -= (p.v * dt * dpr) / H; if (p.y < -0.02) { p.y = 1.02; p.x = rnd(); } }
       draw(t); raf = requestAnimationFrame(loop);
@@ -600,6 +607,7 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
     const onMove = (e) => { const r = host.getBoundingClientRect(); target.set((e.clientX - r.left) / r.width, 1 - (e.clientY - r.top) / r.height); };
     let raf = 0, vis = true, last = 0, time = 3;
     const loop = (now) => { raf = 0; if (!vis || document.hidden) { last = 0; return; }
+      if (this.ovBusy) { last = 0; raf = requestAnimationFrame(loop); return; }
       const dt = last ? Math.min((now - last) / 1000, 0.05) : 0; last = now; time += dt * 0.16;
       uni.uTime.value = time; uni.uMouse.value.lerp(target, 0.07); renderer.render(scene, cam); raf = requestAnimationFrame(loop); };
     const start = () => { if (!reduce && !raf && vis && !document.hidden) raf = requestAnimationFrame(loop); };
@@ -752,14 +760,14 @@ col/=max(ws,1e-4);col+=(h(gl_FragCoord.xy+t)-.5)*.01;gl_FragColor=vec4(col,1.);}
         return {
           pillA: mk('a', this.pillARef, 'assets/img_hero_design_01.webp'), pillB: mk('b', this.pillBRef, 'assets/img_hero_dev_01.webp'),
           ovRef: this.ovRef, ovClose: this.ovClose, closePill: this.closePill,
-          ovHidden: !s.ov, ovVis: s.ov ? 'visible' : 'hidden', ovClip: s.ovClip || 'inset(50% round 0px)', ovTrClip: s.ovAnim ? 'clip-path 600ms linear(0, 0.18 7%, 0.55 16%, 0.92 26%, 1.06 34%, 1.08 40%, 1.05 50%, 1.01 62%, 0.996 76%, 1 100%)' : 'none', ovTrTf: s.ovAnim ? 'transform 600ms linear(0, 0.18 7%, 0.55 16%, 0.92 26%, 1.06 34%, 1.08 40%, 1.05 50%, 1.01 62%, 0.996 76%, 1 100%)' : 'none',
+          ovHidden: !s.ov, ovVis: s.ov ? 'visible' : 'hidden', ovClip: s.ovClip || 'inset(50% round 0px)', ovTrClip: !s.ovAnim ? 'none' : s.ovClosing ? 'clip-path 480ms cubic-bezier(0.32, 0.72, 0, 1)' : 'clip-path 620ms cubic-bezier(0.32, 0.72, 0, 1)', ovTrTf: !s.ovAnim ? 'none' : s.ovClosing ? 'transform 480ms cubic-bezier(0.32, 0.72, 0, 1)' : 'transform 620ms cubic-bezier(0.32, 0.72, 0, 1)',
           ovAOp: isA ? 1 : 0, ovBOp: isA ? 0 : 1,
           ovAlt: isA ? 'Design view: a Figma-style frame with layout grid, spacing redlines, the JAS wordmark, type scale, shapes, icons and colour tokens' : 'Code view: James Albert Salva described as a JavaScript object with role, years, stack and availability',
           ovKicker: isA ? 'Design, the UI/UX side' : 'Engineering, the code side',
           ovTitle: isA ? 'Grids, spacing, type and shapes: how I set up a screen before it ships.' : 'Me, as an object: 8+ years of HTML, CSS and JavaScript.',
           ovBg: isA ? '#2443A8' : '#1B0D10', ovDot: isA ? '#6E8FF0' : '#F0545A', ovDotRadius: isA ? '50%' : '2px', ovTextOp: s.ovOpen ? 1 : 0,
           heroW: cb ? px(cb.S) : '100%', heroH: cb ? px(cb.S) : '100%', ovL: cb ? px(cb.L) : '0px', ovT: cb ? px(cb.T) : '0px', ovCanvasTf: ovImgTf + ' scale(' + (cb ? cb.S / 1000 : 1) + ')',
-          ovEnd: (e) => { if (e.target === e.currentTarget && e.propertyName === 'clip-path' && s.ovClosing) { clearTimeout(this.ovT); this.finishClose(); } }
+          ovEnd: (e) => { if (e.target === e.currentTarget && e.propertyName === 'clip-path' && this.state.ovClosing && performance.now() - (this.ovCloseAt || 0) > 400) { clearTimeout(this.ovT); this.finishClose(); } }
         };
       })(),
       heroLineWrap: s.w >= 640 ? 'nowrap' : 'normal',
