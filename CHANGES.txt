@@ -1,0 +1,12 @@
+React build patch 20261105d (on top of 20261105c)
+
+Fix: hero pills (design / code view) flickered on open and close.
+
+Files (same paths as in your repo, replace them):
+- index.html     overlay animation timing now switches on only after the start frame; version tag 20261105c -> 20261105d
+- js/home.js     open/close sequence: start at pill size with animation off, wait 2 frames, then animate; close back to pill; re-tap while closing reverses
+
+Steps:
+1. Copy both files over the existing ones (keep the folder: js/home.js).
+2. Push with Git, then Render (jas-portfolio): Manual Deploy.
+3. Hard refresh (Ctrl+Shift+R) and tap each pill open and closed a few times.
